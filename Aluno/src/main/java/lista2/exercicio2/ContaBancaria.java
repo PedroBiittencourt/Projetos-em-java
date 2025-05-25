@@ -5,6 +5,10 @@ public class ContaBancaria {
     private int numero_conta;
     private float saldo;
 
+    public ContaBancaria() {
+        this.saldo = 0;
+    }
+
     public String getTitular() {
         return titular;
     }
@@ -18,6 +22,9 @@ public class ContaBancaria {
     }
 
     public void setNumero_conta(int numero_conta) {
+        if (numero_conta < 0){
+            throw new IllegalArgumentException("Numero da conta invalido");
+        }
         this.numero_conta = numero_conta;
     }
 
@@ -26,6 +33,9 @@ public class ContaBancaria {
     }
 
     public void setSaldo(float saldo) {
+        if (saldo < 0){
+            throw new IllegalArgumentException("Saldo invalido");
+        }
         this.saldo = saldo;
     }
 

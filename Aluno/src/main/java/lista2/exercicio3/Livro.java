@@ -6,6 +6,14 @@ public class Livro {
     private int ano_publicacao;
     private int numero_paginas;
     private String genero;
+    private boolean aberto;
+    private int pagina_atual;
+
+    public Livro() {
+        this.aberto = false;
+        this.pagina_atual = 1;
+        this.numero_paginas = 1;
+    }
 
     public String getTitulo() {
         return this.titulo;
@@ -35,8 +43,9 @@ public class Livro {
         return this.numero_paginas;
     }
 
+
     public void setNumero_paginas(int numero_paginas) {
-        if (numero_paginas < 0){
+        if (numero_paginas <= 0){
             throw new IllegalArgumentException("Numero de paginas invalido");
         }
         else {
@@ -52,34 +61,61 @@ public class Livro {
         this.genero = genero;
     }
 
-    public String abrir(){
-        return "Livro aberto";
+    public boolean getAberto() {
+        return this.aberto;
     }
 
-    public String fechar(){
-        return "Livro fechado";
+    public void setAberto(boolean aberto) {
+        this.aberto = aberto;
     }
 
-    public int marcarPagina(int pagina) {
-        return pagina;
+    public int getPagina_atual() {
+        return this.pagina_atual;
     }
 
-    public int avancarPagina(int paginaAtual) {
-        if (paginaAtual == this.numero_paginas){
-            return paginaAtual;
-        }
-        else{
-            return paginaAtual + 1;
-        }
+    public void setPagina_atual(int pagina_atual) {
+        this.pagina_atual = pagina_atual;
     }
 
-    public int retrocederPagina(int paginaAtual) {
-        if (paginaAtual == 1){
-            return paginaAtual;
+    public void abrir(){
+        if (this.aberto == true){
+            throw new IllegalArgumentException("O livro ja esta aberto");
         }
-        else {
-            return paginaAtual - 1;
+        this.aberto = true;
+    }
+
+    public void fechar(){
+        if (this.aberto == false){
+            throw new IllegalArgumentException("O livro ja esta fechado");
         }
+        this.aberto = false;
+    }
+
+    public int marcarPagina() {
+        if (this.aberto == false){
+            throw new IllegalArgumentException("Nao eh possivel marcar pagina com livro fechado");
+        }
+        return this.pagina_atual;
+    }
+
+    public void avancarPagina() {
+        if (this.pagina_atual == this.numero_paginas){
+            throw new IllegalArgumentException("O livro ja atingiu o numero total de paginas");
+        }
+        if (this.aberto == false){
+            throw new IllegalArgumentException("Nao eh possivel avancar pagina com livro fechado");
+        }
+        this.pagina_atual += 1;
+    }
+
+    public void retrocederPagina() {
+        if (this.pagina_atual == 1){
+            throw new IllegalArgumentException("O livro esta na primeira pagina");
+        }
+        if (this.aberto == false){
+            throw new IllegalArgumentException("Nao eh possivel retroceder pagina com livro fechado");
+        }
+        this.pagina_atual -= 1;
     }
 
 }

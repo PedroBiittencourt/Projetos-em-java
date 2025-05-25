@@ -6,6 +6,12 @@ public class Pessoa {
     private float altura;
     private float peso;
 
+    public Pessoa() {
+        this.peso = 0;
+        this.idade = 0;
+        this.altura = 0;
+    }
+
     public String getNome() {
         return this.nome;
     }
@@ -30,7 +36,7 @@ public class Pessoa {
     }
 
     public void setAltura(float altura) {
-        if (altura < 0){
+        if (altura <= 0){
             throw new IllegalArgumentException("Altura invalida");
         }
         this.altura = altura;
@@ -41,7 +47,7 @@ public class Pessoa {
     }
 
     public void setPeso(float peso) {
-        if (peso < 0){
+        if (peso <= 0){
             throw new IllegalArgumentException("Peso invalido");
         }
         this.peso = peso;
@@ -52,21 +58,23 @@ public class Pessoa {
     }
 
     public void crescer(float centimetros){
-        if (centimetros < 0){
+        if (centimetros <= 0){
             throw new IllegalArgumentException("Centimetros invalidos");
         }
-        this.altura = centimetros + this.altura;
+        if (idade < 21) {
+            this.altura = centimetros + this.altura;
+        }
     }
 
     public void ganhar_Peso(float quilos) {
-        if (quilos < 0){
+        if (quilos <= 0){
             throw new IllegalArgumentException("Quilos invalidos");
         }
         this.peso = this.peso + quilos;
     }
 
     public void perder_Peso(float quilos) {
-        if (quilos < 0 || quilos > this.peso){
+        if (quilos <= 0 || quilos >= this.peso){
             throw new IllegalArgumentException("Quilos invalidos");
         }
         this.peso = this.peso - quilos;

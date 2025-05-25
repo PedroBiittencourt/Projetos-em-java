@@ -14,6 +14,28 @@ class ContaBancariaTest {
     }
 
     @Test
+    void deveVerificarNumeroDaContaNegativo(){
+        try{
+            contaBancaria.setNumero_conta(-1);
+            fail();
+        }
+        catch(IllegalArgumentException e){
+            assertEquals("Numero da conta invalido", e.getMessage());
+        }
+    }
+
+    @Test
+    void deveVerificarSaldoNegativo(){
+        try{
+            contaBancaria.setSaldo(-0.1f);
+            fail();
+        }
+        catch(IllegalArgumentException e){
+            assertEquals("Saldo invalido", e.getMessage());
+        }
+    }
+
+    @Test
     void deveDepositar() {
         contaBancaria.setSaldo(0);
         contaBancaria.depositar(1);

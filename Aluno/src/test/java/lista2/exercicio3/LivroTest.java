@@ -15,49 +15,134 @@ class LivroTest {
 
     @Test
     void deveAbrirLivro() {
-        assertEquals("Livro aberto", livro.abrir());
+        livro.abrir();
+        assertEquals(true, livro.getAberto());
     }
 
     @Test
     void deveFecharLivro() {
-        assertEquals("Livro fechado", livro.fechar());
+        livro.abrir();
+        livro.fechar();
+        assertEquals(false, livro.getAberto());
     }
 
     @Test
     void deveMarcarPagina() {
-        assertEquals(1, livro.marcarPagina(1));
+        livro.abrir();
+        livro.setPagina_atual(1);
+        assertEquals(1, livro.marcarPagina());
     }
 
     @Test
     void deveAvancarPagina() {
-        assertEquals(2, livro.avancarPagina(1));
+        livro.abrir();
+        livro.setPagina_atual(1);
+        livro.avancarPagina();
+        assertEquals(2, livro.getPagina_atual());
     }
 
     @Test
     void deveNaoAvancarPagina() {
-        livro.setNumero_paginas(10);
-        assertEquals(10, livro.avancarPagina(10));
+        try {
+            livro.abrir();
+            livro.setNumero_paginas(10);
+            livro.setPagina_atual(10);
+            livro.avancarPagina();
+            fail();
+        }
+        catch (IllegalArgumentException e) {
+            assertEquals("O livro ja atingiu o numero total de paginas", e.getMessage());
+        }
     }
 
     @Test
     void deveRetrocederPagina() {
-        assertEquals(1, livro.retrocederPagina(2));
+        livro.abrir();
+        livro.setPagina_atual(2);
+        livro.retrocederPagina();
+        assertEquals(1, livro.getPagina_atual());
     }
 
     @Test
     void deveNaoRetrocederPagina() {
-        livro.setNumero_paginas(1);
-        assertEquals(1, livro.avancarPagina(1));
+        try {
+            livro.setNumero_paginas(1);
+            livro.abrir();
+            livro.retrocederPagina();
+            fail();
+        }
+        catch (IllegalArgumentException e) {
+            assertEquals("O livro esta na primeira pagina", e.getMessage());
+        }
     }
 
     @Test
-    void deveVerificarNumeroDePaginasNegativo() {
+    void deveVerificarNumeroDePaginasZeradoNegativo() {
         try{
-            livro.setNumero_paginas(-1);
+            livro.setNumero_paginas(0);
             fail();
         }
         catch(IllegalArgumentException e){
             assertEquals("Numero de paginas invalido",e.getMessage());
+        }
+    }
+
+    @Test
+    void deveNaoAbrirLivroAberto() {
+        try{
+            livro.abrir();
+            livro.abrir();
+            fail();
+        }
+        catch(IllegalArgumentException e){
+            assertEquals("O livro ja esta aberto", e.getMessage());
+        }
+    }
+
+    @Test
+    void deveNaoFecharLivroFechado() {
+        try{
+            livro.fechar();
+            fail();
+        }
+        catch(IllegalArgumentException e){
+            assertEquals("O livro ja esta fechado", e.getMessage());
+        }
+    }
+
+    @Test
+    void deveNaoMarcarPaginaLivroFechado() {
+        try{
+            livro.marcarPagina();
+            fail();
+        }
+        catch(IllegalArgumentException e){
+            assertEquals("Nao eh possivel marcar pagina com livro fechado", e.getMessage());
+        }
+    }
+
+    @Test
+    void deveNaoAvancarPaginaLivroFechado() {
+        try{
+            livro.setNumero_paginas(2);
+            livro.avancarPagina();
+            fail();
+        }
+        catch(IllegalArgumentException e){
+            assertEquals("Nao eh possivel avancar pagina com livro fechado", e.getMessage());
+        }
+    }
+
+    @Test
+    void deveNaoRetrocederPaginaLivroFechado() {
+        try{
+            livro.setNumero_paginas(2);
+            livro.setPagina_atual(2);
+            livro.retrocederPagina();
+            fail();
+        }
+        catch(IllegalArgumentException e){
+            assertEquals("Nao eh possivel retroceder pagina com livro fechado", e.getMessage());
         }
     }
 

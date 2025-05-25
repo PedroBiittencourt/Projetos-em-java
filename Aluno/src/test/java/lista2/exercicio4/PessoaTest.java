@@ -22,14 +22,22 @@ class PessoaTest {
 
     @Test
     void deveCrescer() {
+        pessoa.setIdade(20);
         pessoa.setAltura(1.75f);
         pessoa.crescer(0.05f);
         assertEquals(1.80f, pessoa.getAltura());
     }
 
     @Test
+    void deveNaoCrescerIdade21Anos() {
+        pessoa.setIdade(21);
+        pessoa.setAltura(1.75f);
+        pessoa.crescer(0.05f);
+        assertEquals(1.75f, pessoa.getAltura());
+    }
+
+    @Test
     void deveGanharPeso() {
-        pessoa.setPeso(0);
         pessoa.ganhar_Peso(0.1f);
         assertEquals(0.1f, pessoa.getPeso());
     }
@@ -53,9 +61,9 @@ class PessoaTest {
     }
 
     @Test
-    void verificaAlturaNegativa() {
+    void verificaAlturaZeradaNegativa() {
         try{
-            pessoa.setAltura(-0.1f);
+            pessoa.setAltura(0);
             fail();
         }
         catch(IllegalArgumentException e){
@@ -64,9 +72,9 @@ class PessoaTest {
     }
 
     @Test
-    void verificaPesoNegativo() {
+    void verificaPesoZeradoNegativo() {
         try{
-            pessoa.setPeso(-0.1f);
+            pessoa.setPeso(0);
             fail();
         }
         catch(IllegalArgumentException e){
@@ -75,9 +83,9 @@ class PessoaTest {
     }
 
     @Test
-    void verificaCentimetroNegativo() {
+    void verificaCentimetroZeradoNegativo() {
         try{
-            pessoa.crescer(-0.1f);
+            pessoa.crescer(0);
             fail();
         }
         catch(IllegalArgumentException e){
@@ -86,9 +94,9 @@ class PessoaTest {
     }
 
     @Test
-    void verificaQuilosNegativoGanharPeso() {
+    void verificaQuilosZeradoNegativoGanharPeso() {
         try{
-            pessoa.ganhar_Peso(-0.1f);
+            pessoa.ganhar_Peso(0);
             fail();
         }
         catch(IllegalArgumentException e){
@@ -97,9 +105,9 @@ class PessoaTest {
     }
 
     @Test
-    void verificaQuilosNegativoPerderPeso() {
+    void verificaQuilosZeradoNegativoPerderPeso() {
         try{
-            pessoa.perder_Peso(-0.1f);
+            pessoa.perder_Peso(0);
             fail();
         }
         catch(IllegalArgumentException e){
