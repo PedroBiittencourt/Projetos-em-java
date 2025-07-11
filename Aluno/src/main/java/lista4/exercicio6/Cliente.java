@@ -9,7 +9,6 @@ public class Cliente {
 
     public Cliente() {
         this.codigo = 0;
-        this.nome = "";
         this.vagas = new ArrayList<Vaga>();
     }
 
@@ -18,6 +17,9 @@ public class Cliente {
     }
 
     public void setCodigo(int codigo) {
+        if (codigo <= 0) {
+            throw new IllegalArgumentException("Codigo invalido");
+        }
         this.codigo = codigo;
     }
 
@@ -26,6 +28,9 @@ public class Cliente {
     }
 
     public void setNome(String nome) {
+        if (nome.trim().isEmpty()){
+            throw new IllegalArgumentException("Nome invalido");
+        }
         this.nome = nome;
     }
 
@@ -43,11 +48,11 @@ public class Cliente {
         }
     }
 
-    public int calcularNumeroVagas() {
+    public int getNumeroVagas() {
         return this.vagas.size();
     }
 
-    public ArrayList<String> listaVagasCliente() {
+    public ArrayList<String> listaVagas() {
         ArrayList<String> resultado = new ArrayList<String>();
         for (Vaga vaga : vagas) {
             if (vaga.getClass().equals(VagaDiaria.class)) {
@@ -61,7 +66,7 @@ public class Cliente {
         return resultado;
     }
 
-    public ArrayList<Float> listaValorVagasCliente() {
+    public ArrayList<Float> listaValorVagas() {
         ArrayList<Float> resultado = new ArrayList<Float>();
         for (Vaga vaga : vagas) {
             resultado.add(vaga.calcularAluguel());

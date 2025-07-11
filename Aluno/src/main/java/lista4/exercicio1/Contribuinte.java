@@ -9,6 +9,7 @@ public class Contribuinte {
     private ArrayList<Imovel> imoveis;
 
     public Contribuinte() {
+        this.codigo = 0;
         this.imoveis = new ArrayList<Imovel>();
     }
 
@@ -25,6 +26,9 @@ public class Contribuinte {
     }
 
     public void setNome(String nome) {
+        if (nome.trim().isEmpty()){
+            throw new IllegalArgumentException("Nome invalido");
+        }
         this.nome = nome;
     }
 
@@ -33,10 +37,13 @@ public class Contribuinte {
     }
 
     public void setCodigo(int codigo) {
+        if (codigo <= 0){
+            throw new IllegalArgumentException("Codigo invalido");
+        }
         this.codigo = codigo;
     }
 
-    public void alocar(Imovel imovel){
+    public void alocarImovel(Imovel imovel){
         if (!this.imoveis.contains(imovel)) {
             this.imoveis.add(imovel);
         }
@@ -46,11 +53,7 @@ public class Contribuinte {
         return this.imoveis.size();
     }
 
-    public void desalocar(Imovel imovel) {
-        this.imoveis.remove(imovel);
-    }
-
-    public ArrayList<Float> obterValorImoveis() {
+    public ArrayList<Float> getValorImoveis() {
         ArrayList<Float> resultado = new ArrayList<Float>();
         for (Imovel imovel : this.imoveis){
             resultado.add(imovel.calcularValor());
@@ -58,6 +61,18 @@ public class Contribuinte {
         return resultado;
     }
 
-
+    public ArrayList<String> getImoveisPorCliente() {
+        ArrayList<String> resultado = new ArrayList<String>();
+        for (Imovel imovel : this.imoveis) {
+            if (imovel.getClass() == Lote.class) {
+                resultado.add("Lote");
+            } else if (imovel.getClass() == Casa.class) {
+                resultado.add("Casa");
+            } else if (imovel.getClass() == Apartamento.class) {
+                resultado.add("Apartamento");
+            }
+        }
+        return resultado;
+    }
 
 }

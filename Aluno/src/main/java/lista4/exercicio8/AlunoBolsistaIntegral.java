@@ -14,6 +14,9 @@ public class AlunoBolsistaIntegral extends Aluno {
     }
 
     public void setQuantidadeParcelasIsentas(int quantidadeParcelasIsentas) {
+        if (quantidadeParcelasIsentas < 0) {
+            throw new IllegalArgumentException("Parcelas invalidas");
+        }
         this.quantidadeParcelasIsentas = quantidadeParcelasIsentas;
     }
 }

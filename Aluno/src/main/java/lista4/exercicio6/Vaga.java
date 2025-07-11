@@ -6,7 +6,6 @@ public abstract class Vaga {
 
     public Vaga() {
         this.numero = 0;
-        this.placaVeiculo = "";
     }
 
     public int getNumero() {
@@ -14,6 +13,9 @@ public abstract class Vaga {
     }
 
     public void setNumero(int numero) {
+        if (numero <= 0) {
+            throw new IllegalArgumentException("Numero invalido");
+        }
         this.numero = numero;
     }
 
@@ -22,6 +24,9 @@ public abstract class Vaga {
     }
 
     public void setPlacaVeiculo(String placaVeiculo) {
+        if (placaVeiculo.trim().isEmpty()){
+            throw new IllegalArgumentException("Placa invalida");
+        }
         this.placaVeiculo = placaVeiculo;
     }
 

@@ -9,6 +9,7 @@ public class Hospede {
     private ArrayList<Reserva> reservas;
 
     public Hospede(){
+        this.codigo = 0;
         this.reservas = new ArrayList<Reserva>();
     }
 
@@ -25,6 +26,9 @@ public class Hospede {
     }
 
     public void setNome(String nome) {
+        if (nome.trim().isEmpty()){
+            throw new IllegalArgumentException("Nome invalido");
+        }
         this.nome = nome;
     }
 
@@ -33,17 +37,16 @@ public class Hospede {
     }
 
     public void setCodigo(int codigo) {
+        if (codigo <= 0) {
+            throw new IllegalArgumentException("Codigo invalido");
+        }
         this.codigo = codigo;
     }
 
-    public void alocar(Reserva reserva){
+    public void alocarReserva(Reserva reserva){
         if (!this.reservas.contains(reserva)){
             this.reservas.add(reserva);
         }
-    }
-
-    public void desalocar(Reserva reserva){
-        this.reservas.remove(reserva);
     }
 
     public int getNumeroReservas(){

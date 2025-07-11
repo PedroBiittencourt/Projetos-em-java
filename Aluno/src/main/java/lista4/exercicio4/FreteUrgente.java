@@ -1,20 +1,12 @@
 package lista4.exercicio4;
 
 public class FreteUrgente extends Frete{
-    private float taxaEntrega;
+
     private int quantidadeItens;
 
     public FreteUrgente() {
-        this.taxaEntrega = 0;
+        super();
         this.quantidadeItens = 0;
-    }
-
-    public float getTaxaEntrega() {
-        return this.taxaEntrega;
-    }
-
-    public void setTaxaEntrega(float taxaEntrega) {
-        this.taxaEntrega = taxaEntrega;
     }
 
     public int getQuantidadeItens() {
@@ -22,10 +14,13 @@ public class FreteUrgente extends Frete{
     }
 
     public void setQuantidadeItens(int quantidadeItens) {
+        if (quantidadeItens <= 0) {
+            throw new IllegalArgumentException("Quantidade de itens invalido");
+        }
         this.quantidadeItens = quantidadeItens;
     }
 
     public float calcularFrete() {
-        return (getValorFrete() + this.taxaEntrega + (this.quantidadeItens * 10));
+        return (getValorFrete() + getTaxaEntrega() + (this.quantidadeItens * 10));
     }
 }

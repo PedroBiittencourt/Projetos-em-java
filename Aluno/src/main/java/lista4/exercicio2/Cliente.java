@@ -9,6 +9,7 @@ public class Cliente {
     private ArrayList<Conta> contas;
 
     public Cliente(){
+        this.codigo = 0;
         this.contas = new ArrayList<Conta>();
     }
 
@@ -42,14 +43,10 @@ public class Cliente {
         this.codigo = codigo;
     }
 
-    public void alocar(Conta conta){
+    public void alocarConta(Conta conta){
         if (!this.contas.contains(conta)){
             this.contas.add(conta);
         }
-    }
-
-    public void desalocar(Conta conta) {
-        this.contas.remove(conta);
     }
 
     public int getNumeroContas(){

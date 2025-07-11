@@ -8,12 +8,56 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class HospedeTest {
 
+
     @Test
-    void deveAlocarConta(){
+    void deveVerificarNomeInvalido(){
+        try {
+            Hospede hospede = new Hospede();
+            hospede.setNome(" ");
+            fail();
+        }
+        catch (IllegalArgumentException e){
+            assertEquals("Nome invalido", e.getMessage());
+        }
+    }
+
+    @Test
+    void deveVerificarCodigoInvalido(){
+        try {
+            Hospede hospede = new Hospede();
+            hospede.setCodigo(0);
+            fail();
+        }
+        catch (IllegalArgumentException e){
+            assertEquals("Codigo invalido", e.getMessage());
+        }
+    }
+
+    @Test
+    void deveAlocarReserva(){
         Hospede hospede1 = new Hospede();
         Reserva reserva1 = new QuartoDuplo();
-       hospede1.alocar(reserva1);
+        hospede1.alocarReserva(reserva1);
         assertEquals(1, hospede1.getNumeroReservas());
+    }
+
+    @Test
+    void deveNaoAlocarReservaRepetida(){
+        Hospede hospede1 = new Hospede();
+        Reserva reserva1 = new QuartoDuplo();
+        hospede1.alocarReserva(reserva1);
+        hospede1.alocarReserva(reserva1);
+        assertEquals(1,hospede1.getNumeroReservas());
+    }
+
+    @Test
+    void deveRetornarNumeroReservas(){
+        Hospede hospede1 = new Hospede();
+        Reserva reserva1 = new QuartoDuplo();
+        Reserva reserva2 = new QuartoDuplo();
+        hospede1.alocarReserva(reserva1);
+        hospede1.alocarReserva(reserva2);
+        assertEquals(2, hospede1.getNumeroReservas());
     }
 
     @Test
@@ -23,9 +67,9 @@ class HospedeTest {
         QuartoTriplo reserva3 = new QuartoTriplo();
 
         Hospede hospede1 = new Hospede();
-        hospede1.alocar(reserva1);
-        hospede1.alocar(reserva2);
-        hospede1.alocar(reserva3);
+        hospede1.alocarReserva(reserva1);
+        hospede1.alocarReserva(reserva2);
+        hospede1.alocarReserva(reserva3);
 
         ArrayList<String> resultadoEsperado = new ArrayList<String>();
         resultadoEsperado.add("Quarto duplo");
@@ -49,9 +93,9 @@ class HospedeTest {
 
 
         Hospede hospede1 = new Hospede();
-        hospede1.alocar(reserva1);
-        hospede1.alocar(reserva2);
-        hospede1.alocar(reserva3);
+        hospede1.alocarReserva(reserva1);
+        hospede1.alocarReserva(reserva2);
+        hospede1.alocarReserva(reserva3);
 
         ArrayList<Float> resultadoEsperado = new ArrayList<Float>();
         resultadoEsperado.add(90f);

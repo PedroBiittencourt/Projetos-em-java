@@ -9,7 +9,6 @@ public class Cliente {
 
     public Cliente() {
         this.codigo = 0;
-        this.nome = "";
         this.fitas = new ArrayList<Fita>();
     }
 
@@ -18,6 +17,9 @@ public class Cliente {
     }
 
     public void setCodigo(int codigo) {
+        if (codigo <= 0) {
+            throw new IllegalArgumentException("Codigo invalido");
+        }
         this.codigo = codigo;
     }
 
@@ -26,6 +28,9 @@ public class Cliente {
     }
 
     public void setNome(String nome) {
+        if (nome.trim().isEmpty()){
+            throw new IllegalArgumentException("Nome invalido");
+        }
         this.nome = nome;
     }
 
@@ -43,11 +48,11 @@ public class Cliente {
         }
     }
 
-    public int calcularQuantiadeFitasAlugadas() {
+    public int getQuantidadeFitas() {
         return this.fitas.size();
     }
 
-    public ArrayList<String> listaFitasAlugadas() {
+    public ArrayList<String> listaFitas() {
         ArrayList<String> resultado = new ArrayList<String>();
         for (Fita fita : fitas) {
             if (fita.getClass().equals(FitaCatalogo.class)) {
@@ -61,10 +66,10 @@ public class Cliente {
         return resultado;
     }
 
-    public ArrayList<Float> listaValoresFitasAlugadas() {
+    public ArrayList<Float> listaValoresFitas() {
         ArrayList<Float> resultado = new ArrayList<Float>();
         for (Fita fita : fitas) {
-            resultado.add(fita.calcularValorEmprestimoFita());
+            resultado.add(fita.calcularValorEmprestimo());
         }
         return resultado;
     }

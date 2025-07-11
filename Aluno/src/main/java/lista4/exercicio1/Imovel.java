@@ -4,6 +4,11 @@ public abstract class Imovel {
     private float precoMetroQuadrado;
     private float quantidadeMetroQuadrado;
 
+    public Imovel(){
+        this.precoMetroQuadrado = 0;
+        this.quantidadeMetroQuadrado = 0;
+    }
+
     public float getPrecoMetroQuadrado() {
         return this.precoMetroQuadrado;
     }

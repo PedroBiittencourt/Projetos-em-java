@@ -3,7 +3,7 @@ package lista4.exercicio8;
 public class AlunoBolsistaParcial extends Aluno {
 
     private float valorMensalidade;
-    private float quantidadeParcelas;
+    private int quantidadeParcelas;
     private float percentualDesconto;
 
     public AlunoBolsistaParcial(Curso curso) {
@@ -17,14 +17,20 @@ public class AlunoBolsistaParcial extends Aluno {
     }
 
     public void setValorMensalidade(float valorMensalidade) {
+        if (valorMensalidade <= 0) {
+            throw new IllegalArgumentException("Valor de mensalidade invalida");
+        }
         this.valorMensalidade = valorMensalidade;
     }
 
-    public float getQuantidadeParcelas() {
+    public int getQuantidadeParcelas() {
         return this.quantidadeParcelas;
     }
 
-    public void setQuantidadeParcelas(float quantidadeParcelas) {
+    public void setQuantidadeParcelas(int quantidadeParcelas) {
+        if (quantidadeParcelas <= 0) {
+            throw new IllegalArgumentException("Quantidade de parcelas invalida");
+        }
         this.quantidadeParcelas = quantidadeParcelas;
     }
 
@@ -35,8 +41,14 @@ public class AlunoBolsistaParcial extends Aluno {
     public void setPercentualDesconto(float percentualDesconto) {
         if (percentualDesconto > 50) {
             throw new IllegalArgumentException("O desconto nao pode ser maior que 50%");
-        } else {
-            this.percentualDesconto = percentualDesconto;
+        } if (percentualDesconto <= 0) {
+            throw new IllegalArgumentException("Desconto invalido");
         }
+            this.percentualDesconto = percentualDesconto;
     }
+
+    public float calcularMensalidade() {
+        return (this.valorMensalidade - (this.valorMensalidade * (this.percentualDesconto/100)));
+    }
+
 }

@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ApartamentoTest {
 
     @Test
-    void deveCalcularPrecoComUmAndarMenorQue10(){
+    void deveCalcularPrecoComAndarMenorQue10(){
         Apartamento apt1 = new Apartamento();
         apt1.setPrecoMetroQuadrado(40);
         apt1.setQuantidadeMetroQuadrado(1);
@@ -22,6 +22,18 @@ class ApartamentoTest {
         apt1.setQuantidadeMetroQuadrado(1);
         apt1.setQuantidadeAndar(10);
         assertEquals(0, apt1.calcularValor());
+    }
+
+    @Test
+    void deveVerificarQuantidadeAndarZeradoNegativo(){
+        try{
+            Apartamento apt = new Apartamento();
+            apt.setQuantidadeAndar(0);
+            fail();
+        }
+        catch (IllegalArgumentException e){
+            assertEquals("Quantidade de andar invalido", e.getMessage());
+        }
     }
 
 

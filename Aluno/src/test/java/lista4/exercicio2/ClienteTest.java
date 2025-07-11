@@ -21,7 +21,7 @@ class ClienteTest {
     }
 
     @Test
-    void deveVerificarCodigoInvalido(){
+    void deveVerificarCodigoZeradoNegativo(){
         try {
             Cliente cliente = new Cliente();
             cliente.setCodigo(0);
@@ -36,8 +36,27 @@ class ClienteTest {
     void deveAlocarConta(){
         Cliente cliente1 = new Cliente();
         Conta conta1 = new ContaCorrenteNormal();
-        cliente1.alocar(conta1);
+        cliente1.alocarConta(conta1);
         assertEquals(1, cliente1.getNumeroContas());
+    }
+
+    @Test
+    void deveNaoAlocarContaRepetida(){
+        Cliente cliente = new Cliente();
+        Conta conta = new ContaCorrenteNormal();
+        cliente.alocarConta(conta);
+        cliente.alocarConta(conta);
+        assertEquals(1,cliente.getNumeroContas());
+    }
+
+    @Test
+    void deveRetornarNumeroContas(){
+        Cliente cliente = new Cliente();
+        ContaCorrenteNormal conta1 = new ContaCorrenteNormal();
+        ContaCorrenteEspecial conta2 = new ContaCorrenteEspecial();
+        cliente.alocarConta(conta1);
+        cliente.alocarConta(conta2);
+        assertEquals(2, cliente.getNumeroContas());
     }
 
     @Test
@@ -52,9 +71,9 @@ class ClienteTest {
         conta3.setSaldoDisponivel(99f);
 
         Cliente cliente = new Cliente();
-        cliente.alocar(conta1);
-        cliente.alocar(conta2);
-        cliente.alocar(conta3);
+        cliente.alocarConta(conta1);
+        cliente.alocarConta(conta2);
+        cliente.alocarConta(conta3);
 
         ArrayList<Float> resultadoEsperado = new ArrayList<Float>();
         resultadoEsperado.add(conta1.calcularSaldo());
@@ -72,9 +91,9 @@ class ClienteTest {
         ContaPoupanca conta3 = new ContaPoupanca();
 
         Cliente cliente = new Cliente();
-        cliente.alocar(conta1);
-        cliente.alocar(conta2);
-        cliente.alocar(conta3);
+        cliente.alocarConta(conta1);
+        cliente.alocarConta(conta2);
+        cliente.alocarConta(conta3);
 
         ArrayList<String> resultadoEsperado = new ArrayList<String>();
         resultadoEsperado.add("Normal");

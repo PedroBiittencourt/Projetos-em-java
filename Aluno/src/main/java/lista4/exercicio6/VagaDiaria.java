@@ -4,6 +4,7 @@ public class VagaDiaria extends Vaga {
     private int quantidadeDias;
 
     VagaDiaria() {
+        super();
         this.quantidadeDias = 0;
     }
 
@@ -12,6 +13,9 @@ public class VagaDiaria extends Vaga {
     }
 
     public void setQuantidadeDias(int quantidadeDias) {
+        if (quantidadeDias <= 0) {
+            throw new IllegalArgumentException("Quantidade de dias invalida");
+        }
         this.quantidadeDias = quantidadeDias;
     }
 

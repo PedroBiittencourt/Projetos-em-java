@@ -1,7 +1,12 @@
 package lista4.exercicio5;
 
 public class ManutencaoMonitor extends Manutencao {
-    public float calcularValorManutencao() {
+
+    public ManutencaoMonitor(){
+        super();
+    }
+
+    public float calcularValor() {
         return getValorMaoDeObra();
     }
 }

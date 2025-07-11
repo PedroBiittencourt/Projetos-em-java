@@ -5,18 +5,10 @@ public class FitaEspecial extends Fita {
     private float valorAluguelDiario;
 
     public FitaEspecial() {
-        this.valorAluguelDiario = 0;
+        super();
     }
 
-    public float getValorAluguelDiario() {
-        return this.valorAluguelDiario;
-    }
-
-    public void setValorAluguelDiario(float valorAluguelDiario) {
-        this.valorAluguelDiario = valorAluguelDiario;
-    }
-
-    public float calcularValorEmprestimoFita() {
-        return (this.quantidadeDiasEmprestimo * this.valorAluguelDiario);
+    public float calcularValorEmprestimo() {
+        return (getQuantidadeDiasEmprestimo() * getValorAluguelDiario());
     }
 }

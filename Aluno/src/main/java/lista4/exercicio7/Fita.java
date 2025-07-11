@@ -5,12 +5,23 @@ import java.util.Date;
 public abstract class Fita {
     private Date data;
     private String nomeFilme;
-    protected int quantidadeDiasEmprestimo;
+    private int quantidadeDiasEmprestimo;
+    private float valorAluguelDiario;
 
     public Fita() {
         this.data = new Date();
-        this.nomeFilme = "";
         this.quantidadeDiasEmprestimo = 0;
+    }
+
+    public float getValorAluguelDiario() {
+        return this.valorAluguelDiario;
+    }
+
+    public void setValorAluguelDiario(float valorAluguelDiario) {
+        if (valorAluguelDiario <= 0) {
+            throw new IllegalArgumentException("Valor invalido");
+        }
+        this.valorAluguelDiario = valorAluguelDiario;
     }
 
     public Date getData() {
@@ -26,6 +37,9 @@ public abstract class Fita {
     }
 
     public void setNomeFilme(String nomeFilme) {
+        if (nomeFilme.trim().isEmpty()){
+            throw new IllegalArgumentException("Nome de filme invalido");
+        }
         this.nomeFilme = nomeFilme;
     }
 
@@ -34,8 +48,11 @@ public abstract class Fita {
     }
 
     public void setQuantidadeDiasEmprestimo(int quantidadeDiasEmprestimo) {
+        if (quantidadeDiasEmprestimo <= 0) {
+            throw new IllegalArgumentException("Quantidade de dias invalida");
+        }
         this.quantidadeDiasEmprestimo = quantidadeDiasEmprestimo;
     }
 
-    public abstract float calcularValorEmprestimoFita();
+    public abstract float calcularValorEmprestimo();
 }

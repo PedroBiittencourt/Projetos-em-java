@@ -9,7 +9,6 @@ public class Cliente {
 
     public Cliente() {
         this.codigo = 0;
-        this.nome = "";
         this.fretes = new ArrayList<Frete>();
     }
 
@@ -18,6 +17,9 @@ public class Cliente {
     }
 
     public void setCodigo(int codigo) {
+        if (codigo <= 0) {
+            throw new IllegalArgumentException("Codigo invalido");
+        }
         this.codigo = codigo;
     }
 
@@ -26,6 +28,9 @@ public class Cliente {
     }
 
     public void setNome(String nome) {
+        if (nome.trim().isEmpty()){
+            throw new IllegalArgumentException("Nome invalido");
+        }
         this.nome = nome;
     }
 
@@ -43,7 +48,7 @@ public class Cliente {
         }
     }
 
-    public int calcularQuantidadeFretes() {
+    public int getQuantidadeFretes() {
         return this.fretes.size();
     }
 

@@ -7,25 +7,53 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ClienteTest {
+
     @Test
-    void deveRetornarZeroManutencoes() {
-        Cliente cliente = new Cliente();
-        assertEquals(0, cliente.numeroManutencoes());
+    void deveVerificarNomeInvalido(){
+        try {
+            Cliente cliente = new Cliente();
+            cliente.setNome(" ");
+            fail();
+        }
+        catch (IllegalArgumentException e){
+            assertEquals("Nome invalido", e.getMessage());
+        }
     }
 
     @Test
-    void deveRetornarUmaManutencao() {
-        ManutencaoCPU manutencao = new ManutencaoCPU();
+    void deveVerificarCodigoInvalido(){
+        try {
+            Cliente cliente = new Cliente();
+            cliente.setCodigo(0);
+            fail();
+        }
+        catch (IllegalArgumentException e){
+            assertEquals("Codigo invalido", e.getMessage());
+        }
+    }
+
+    @Test
+    void deveAlocarManutencao() {
+        ManutencaoCPU manutencao1 = new ManutencaoCPU();
         Cliente cliente = new Cliente();
-        cliente.alocarManutencao(manutencao);
+        cliente.alocarManutencao(manutencao1);
         assertEquals(1, cliente.numeroManutencoes());
     }
 
     @Test
-    void deveRetornarMaisDeUmaManutencao() {
+    void deveNaoAlocarContaRepetida(){
+        Cliente cliente = new Cliente();
+        ManutencaoCPU manutencao1 = new ManutencaoCPU();
+        cliente.alocarManutencao(manutencao1);
+        cliente.alocarManutencao(manutencao1);
+        assertEquals(1,cliente.numeroManutencoes());
+    }
+
+    @Test
+    void deveRetornarNumeroContas(){
+        Cliente cliente = new Cliente();
         ManutencaoCPU manutencao1 = new ManutencaoCPU();
         ManutencaoCPU manutencao2 = new ManutencaoCPU();
-        Cliente cliente = new Cliente();
         cliente.alocarManutencao(manutencao1);
         cliente.alocarManutencao(manutencao2);
         assertEquals(2, cliente.numeroManutencoes());
@@ -52,7 +80,7 @@ class ClienteTest {
         esperado.add(15f);
         esperado.add(20f);
         esperado.add(40f);
-        assertEquals(esperado, cliente.listaValoresManutencaoCliente());
+        assertEquals(esperado, cliente.listaValoresManutencao());
     }
 
     @Test
@@ -71,7 +99,7 @@ class ClienteTest {
         esperado.add("Manutenção de CPU");
         esperado.add("Manutençãoo de Impressora");
         esperado.add("Manutençãoo de Monitor");
-        assertEquals(esperado, cliente.listaManutencaoCliente());
+        assertEquals(esperado, cliente.listaManutencao());
     }
 
 }

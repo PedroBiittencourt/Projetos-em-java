@@ -4,6 +4,7 @@ public class VagaSemanal extends Vaga {
     private int quantidadeSemanas;
 
     public VagaSemanal() {
+        super();
         this.quantidadeSemanas = 0;
     }
 
@@ -12,6 +13,9 @@ public class VagaSemanal extends Vaga {
     }
 
     public void setQuantidadeSemanas(int quantidadeSemanas) {
+        if (quantidadeSemanas <= 0) {
+            throw new IllegalArgumentException("Quantidade de semanas invalida");
+        }
         this.quantidadeSemanas = quantidadeSemanas;
     }
 

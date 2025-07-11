@@ -9,27 +9,54 @@ import static org.junit.jupiter.api.Assertions.*;
 class ClienteTest {
 
     @Test
-    void deveRetornarZeroFitas() {
-        lista4.exercicio6.Cliente cliente = new lista4.exercicio6.Cliente();
-        assertEquals(0, cliente.calcularNumeroVagas());
+    void deveVerificarNomeInvalido(){
+        try {
+            Cliente cliente = new Cliente();
+            cliente.setNome(" ");
+            fail();
+        }
+        catch (IllegalArgumentException e){
+            assertEquals("Nome invalido", e.getMessage());
+        }
     }
 
     @Test
-    void deveRetornarUmaFita() {
+    void deveVerificarCodigoInvalido(){
+        try {
+            Cliente cliente = new Cliente();
+            cliente.setCodigo(0);
+            fail();
+        }
+        catch (IllegalArgumentException e){
+            assertEquals("Codigo invalido", e.getMessage());
+        }
+    }
+
+    @Test
+    void deveAlocarFita() {
         Fita fita = new FitaEspecial();
         Cliente cliente = new Cliente();
         cliente.alocarFita(fita);
-        assertEquals(1, cliente.calcularQuantiadeFitasAlugadas());
+        assertEquals(1, cliente.getQuantidadeFitas());
     }
 
     @Test
-    void deveRetornarMaisDeUmaFita() {
+    void deveNaoAlocarFitaRepetida(){
+        Cliente cliente = new Cliente();
+        Fita fita = new FitaEspecial();
+        cliente.alocarFita(fita);
+        cliente.alocarFita(fita);
+        assertEquals(1,cliente.getQuantidadeFitas());
+    }
+
+    @Test
+    void deveRetornarQuantidadeFitas() {
         Fita fita1 = new FitaEspecial();
         Fita fita2 = new FitaEspecial();
         Cliente cliente = new Cliente();
         cliente.alocarFita(fita1);
         cliente.alocarFita(fita2);
-        assertEquals(2, cliente.calcularQuantiadeFitasAlugadas());
+        assertEquals(2, cliente.getQuantidadeFitas());
     }
 
     @Test
@@ -48,7 +75,7 @@ class ClienteTest {
         esperado.add("Fita Catalogo");
         esperado.add("Fita Lancamento");
 
-        assertEquals(esperado, cliente.listaFitasAlugadas());
+        assertEquals(esperado, cliente.listaFitas());
     }
 
     @Test
@@ -73,7 +100,7 @@ class ClienteTest {
         esperado.add(5f);
         esperado.add(8f);
 
-        assertEquals(esperado, cliente.listaValoresFitasAlugadas());
+        assertEquals(esperado, cliente.listaValoresFitas());
     }
 
 }

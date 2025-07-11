@@ -7,29 +7,58 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ClienteTest {
+
     @Test
-    void deveRetornarZeroFretes() {
-        Cliente cliente = new Cliente();
-        assertEquals(0, cliente.calcularQuantidadeFretes());
+    void deveVerificarNomeInvalido(){
+        try {
+            Cliente cliente = new Cliente();
+            cliente.setNome(" ");
+            fail();
+        }
+        catch (IllegalArgumentException e){
+            assertEquals("Nome invalido", e.getMessage());
+        }
     }
 
     @Test
-    void deveRetornarUmFrete() {
+    void deveVerificarCodigoInvalido(){
+        try {
+            Cliente cliente = new Cliente();
+            cliente.setCodigo(0);
+            fail();
+        }
+        catch (IllegalArgumentException e){
+            assertEquals("Codigo invalido", e.getMessage());
+        }
+    }
+
+    @Test
+    void deveAlocarFrete(){
+        Cliente cliente1 = new Cliente();
+        Frete frete = new FreteNormal();
+        cliente1.alocarFrete(frete);
+        assertEquals(1, cliente1.getQuantidadeFretes());
+    }
+
+    @Test
+    void deveNaoAlocarFreteRepetido(){
         Cliente cliente = new Cliente();
-        FreteNormal frete = new FreteNormal();
+        Frete frete = new FreteNormal();
         cliente.alocarFrete(frete);
-        assertEquals(1, cliente.calcularQuantidadeFretes());
+        cliente.alocarFrete(frete);
+        assertEquals(1,cliente.getQuantidadeFretes());
     }
 
     @Test
-    void deveRetornarMaisDeUmFrete() {
+    void deveRetornarNumeroFretes() {
         Cliente cliente = new Cliente();
         FreteNormal frete1 = new FreteNormal();
         FreteNormal frete2 = new FreteNormal();
         cliente.alocarFrete(frete1);
         cliente.alocarFrete(frete2);
-        assertEquals(2, cliente.calcularQuantidadeFretes());
+        assertEquals(2, cliente.getQuantidadeFretes());
     }
+
 
     @Test
     void deveRetornarListaFretesCliente() {

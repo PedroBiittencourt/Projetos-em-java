@@ -9,7 +9,6 @@ public class Cliente {
 
     public Cliente() {
         this.codigo = 0;
-        this.nome = "";
         this.manutencoes = new ArrayList<Manutencao>();
     }
 
@@ -18,6 +17,9 @@ public class Cliente {
     }
 
     public void setCodigo(int codigo) {
+        if (codigo <= 0) {
+            throw new IllegalArgumentException("Codigo invalido");
+        }
         this.codigo = codigo;
     }
 
@@ -26,6 +28,9 @@ public class Cliente {
     }
 
     public void setNome(String nome) {
+        if (nome.trim().isEmpty()){
+            throw new IllegalArgumentException("Nome invalido");
+        }
         this.nome = nome;
     }
 
@@ -47,7 +52,7 @@ public class Cliente {
         return (this.manutencoes.size());
     }
 
-    public ArrayList<String> listaManutencaoCliente() {
+    public ArrayList<String> listaManutencao() {
         ArrayList<String> resultado = new ArrayList<String>();
         for (Manutencao manutencao : manutencoes) {
             if (manutencao.getClass().equals(ManutencaoCPU.class)) {
@@ -61,10 +66,10 @@ public class Cliente {
         return resultado;
     }
 
-    public ArrayList<Float> listaValoresManutencaoCliente() {
+    public ArrayList<Float> listaValoresManutencao() {
         ArrayList<Float> resultado = new ArrayList<Float>();
         for (Manutencao manutencao : manutencoes) {
-            resultado.add(manutencao.calcularValorManutencao());
+            resultado.add(manutencao.calcularValor());
         }
         return resultado;
     }

@@ -4,6 +4,7 @@ public class VagaMensal extends Vaga {
     private int quantidadeMeses;
 
     public VagaMensal() {
+        super();
         this.quantidadeMeses = 0;
     }
 
@@ -12,6 +13,9 @@ public class VagaMensal extends Vaga {
     }
 
     public void setQuantidadeMeses(int quantidadeMeses) {
+        if (quantidadeMeses <= 0) {
+            throw new IllegalArgumentException("Quantidade de meses invalida");
+        }
         this.quantidadeMeses = quantidadeMeses;
     }
 

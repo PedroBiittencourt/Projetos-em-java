@@ -7,28 +7,56 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ClienteTest {
+
     @Test
-    void deveRetornarZeroVagas() {
-        Cliente cliente = new Cliente();
-        assertEquals(0, cliente.calcularNumeroVagas());
+    void deveVerificarNomeInvalido(){
+        try {
+            Cliente cliente = new Cliente();
+            cliente.setNome(" ");
+            fail();
+        }
+        catch (IllegalArgumentException e){
+            assertEquals("Nome invalido", e.getMessage());
+        }
     }
 
     @Test
-    void deveRetornarUmaVaga() {
-        Vaga vaga = new VagaDiaria();
-        Cliente cliente = new Cliente();
-        cliente.alocarVaga(vaga);
-        assertEquals(1, cliente.calcularNumeroVagas());
+    void deveVerificarCodigoInvalido(){
+        try {
+            Cliente cliente = new Cliente();
+            cliente.setCodigo(0);
+            fail();
+        }
+        catch (IllegalArgumentException e){
+            assertEquals("Codigo invalido", e.getMessage());
+        }
     }
 
     @Test
-    void deveRetornarMaisDeUmaVaga() {
+    void deveAlocarVaga() {
         Vaga vaga1 = new VagaDiaria();
-        Vaga vaga2 = new VagaDiaria();
         Cliente cliente = new Cliente();
         cliente.alocarVaga(vaga1);
+        assertEquals(1, cliente.getNumeroVagas());
+    }
+
+    @Test
+    void deveNaoAlocarVagaRepetida(){
+        Cliente cliente = new Cliente();
+        Vaga vaga1 = new VagaDiaria();
+        cliente.alocarVaga(vaga1);
+        cliente.alocarVaga(vaga1);
+        assertEquals(1,cliente.getNumeroVagas());
+    }
+
+    @Test
+    void deveRetornarNumeroVagas(){
+        Cliente cliente = new Cliente();
+        Vaga vaga1 = new VagaDiaria();
+        Vaga vaga2 = new VagaDiaria();
+        cliente.alocarVaga(vaga1);
         cliente.alocarVaga(vaga2);
-        assertEquals(2, cliente.calcularNumeroVagas());
+        assertEquals(2, cliente.getNumeroVagas());
     }
 
     @Test
@@ -47,7 +75,7 @@ class ClienteTest {
         esperado.add("Vaga semanal");
         esperado.add("Vaga mensal");
 
-        assertEquals(esperado, cliente.listaVagasCliente());
+        assertEquals(esperado, cliente.listaVagas());
     }
 
     @Test
@@ -69,7 +97,7 @@ class ClienteTest {
         esperado.add(120f);
         esperado.add(600f);
 
-        assertEquals(esperado, cliente.listaValorVagasCliente());
+        assertEquals(esperado, cliente.listaValorVagas());
     }
 
 }
