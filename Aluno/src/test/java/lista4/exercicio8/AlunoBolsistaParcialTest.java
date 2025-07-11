@@ -8,7 +8,7 @@ class AlunoBolsistaParcialTest {
 
 
     @Test
-    void deveLancarExcecaoValorMensalidadeZeradoNegativo() {
+    void deveVerificarValorMensalidadeZeradoNegativo() {
         Curso curso = new Curso();
         AlunoBolsistaParcial aluno = new AlunoBolsistaParcial(curso);
         try {
@@ -17,6 +17,14 @@ class AlunoBolsistaParcialTest {
         } catch (IllegalArgumentException e) {
             assertEquals("Valor de mensalidade invalida", e.getMessage());
         }
+    }
+
+    @Test
+    void deveVerificarValorMensalidadeValido() {
+        Curso curso = new Curso();
+        AlunoBolsistaParcial aluno = new AlunoBolsistaParcial(curso);
+        aluno.setValorMensalidade(0.01f);
+        assertEquals(0.01f, aluno.getValorMensalidade(), 0.001f);
     }
 
     @Test
@@ -29,6 +37,14 @@ class AlunoBolsistaParcialTest {
         } catch (IllegalArgumentException e) {
             assertEquals("Quantidade de parcelas invalida", e.getMessage());
         }
+    }
+
+    @Test
+    void deveVerificarQuantidadeParcelasValido() {
+        Curso curso = new Curso();
+        AlunoBolsistaParcial aluno = new AlunoBolsistaParcial(curso);
+        aluno.setQuantidadeParcelas(1);
+        assertEquals(1, aluno.getQuantidadeParcelas());
     }
 
     @Test
@@ -54,6 +70,14 @@ class AlunoBolsistaParcialTest {
         } catch (IllegalArgumentException e) {
             assertEquals("O desconto nao pode ser maior que 50%", e.getMessage());
         }
+    }
+
+    @Test
+    void deveVerificarPercentualDescontoValido() {
+        Curso curso = new Curso();
+        AlunoBolsistaParcial aluno = new AlunoBolsistaParcial(curso);
+        aluno.setPercentualDesconto(0.01f);
+        assertEquals(0.01f, aluno.getPercentualDesconto(), 0.001f);
     }
 
 }

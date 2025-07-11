@@ -19,6 +19,13 @@ class VagaMensalTest {
     }
 
     @Test
+    void deveVerificarQuantidadeMesesValido(){
+            VagaMensal vaga = new VagaMensal();
+            vaga.setQuantidadeMeses(1);
+            assertEquals(1, vaga.getQuantidadeMeses());
+    }
+
+    @Test
     void deveCalcularAluguel(){
         VagaMensal vaga = new VagaMensal();
         vaga.setQuantidadeMeses(1);

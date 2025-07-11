@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class VagaDiariaTest {
 
     @Test
-    void deveVerificarQuantidadeMesesZeradoNegativo(){
+    void deveVerificarQuantidadeDiasZeradoNegativo(){
         try {
             VagaDiaria vaga = new VagaDiaria();
             vaga.setQuantidadeDias(0);
@@ -16,6 +16,13 @@ class VagaDiariaTest {
         catch (IllegalArgumentException e){
             assertEquals("Quantidade de dias invalida", e.getMessage());
         }
+    }
+
+    @Test
+    void deveVerificarQuantidadeDiasValido(){
+            VagaDiaria vaga = new VagaDiaria();
+            vaga.setQuantidadeDias(1);
+            assertEquals(1, vaga.getQuantidadeDias());
     }
 
     @Test

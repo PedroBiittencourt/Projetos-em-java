@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class HospedeTest {
 
-
     @Test
     void deveVerificarNomeInvalido(){
         try {
@@ -20,6 +19,13 @@ class HospedeTest {
             assertEquals("Nome invalido", e.getMessage());
         }
     }
+
+    @Test
+    void deveVerificarNomeValido(){
+        Hospede hospede = new Hospede();;
+        hospede.setNome("Pedro");
+    }
+
 
     @Test
     void deveVerificarCodigoInvalido(){
@@ -34,7 +40,14 @@ class HospedeTest {
     }
 
     @Test
-    void deveAlocarReserva(){
+    void deveVerificarCodigoValido(){
+        Hospede hospede = new Hospede();
+        hospede.setCodigo(1);
+    }
+
+
+    @Test
+    void deveAlocarUmaReserva(){
         Hospede hospede1 = new Hospede();
         Reserva reserva1 = new QuartoDuplo();
         hospede1.alocarReserva(reserva1);
@@ -51,7 +64,13 @@ class HospedeTest {
     }
 
     @Test
-    void deveRetornarNumeroReservas(){
+    void deveAlocarZeroReservas(){
+        Hospede hospede1 = new Hospede();
+        assertEquals(0, hospede1.getNumeroReservas());
+    }
+
+    @Test
+    void deveAlocarMaisDeUmaReserva(){
         Hospede hospede1 = new Hospede();
         Reserva reserva1 = new QuartoDuplo();
         Reserva reserva2 = new QuartoDuplo();

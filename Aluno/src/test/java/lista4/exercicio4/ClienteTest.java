@@ -21,6 +21,13 @@ class ClienteTest {
     }
 
     @Test
+    void deveVerificarNomeValido(){
+        Cliente cliente = new Cliente();
+        cliente.setNome("Pedro");
+    }
+
+
+    @Test
     void deveVerificarCodigoInvalido(){
         try {
             Cliente cliente = new Cliente();
@@ -33,7 +40,14 @@ class ClienteTest {
     }
 
     @Test
-    void deveAlocarFrete(){
+    void deveVerificarCodigoValido(){
+        Cliente cliente = new Cliente();
+        cliente.setCodigo(1);
+    }
+
+
+    @Test
+    void deveAlocarUmFrete(){
         Cliente cliente1 = new Cliente();
         Frete frete = new FreteNormal();
         cliente1.alocarFrete(frete);
@@ -50,7 +64,13 @@ class ClienteTest {
     }
 
     @Test
-    void deveRetornarNumeroFretes() {
+    void deveAlocarZeroFretes(){
+        Cliente cliente1 = new Cliente();
+        assertEquals(0, cliente1.getQuantidadeFretes());
+    }
+
+    @Test
+    void deveAlocarMaisDeUmFrete() {
         Cliente cliente = new Cliente();
         FreteNormal frete1 = new FreteNormal();
         FreteNormal frete2 = new FreteNormal();

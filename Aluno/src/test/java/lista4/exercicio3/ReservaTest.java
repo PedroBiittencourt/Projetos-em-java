@@ -19,6 +19,13 @@ class ReservaTest {
     }
 
     @Test
+    void deveVerificarNumerosDiasValido(){
+            Reserva reserva = new QuartoSingle();
+            reserva.setNumeroDias(1);
+            assertEquals(1, reserva.getNumeroDias());
+    }
+
+    @Test
     void deveVerificarNumerosRefeicoesInvalido(){
         try{
             Reserva reserva = new QuartoSingle();
@@ -28,6 +35,13 @@ class ReservaTest {
         catch(IllegalArgumentException e){
             assertEquals("Numero de refeicoes invalido", e.getMessage());
         }
+    }
+
+    @Test
+    void deveVerificarRefeicoesValido(){
+        Reserva reserva = new QuartoSingle();
+        reserva.setNumeroRefeicoes(1);
+        assertEquals(1, reserva.getNumeroRefeicoes());
     }
 
 }

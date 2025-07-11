@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class AlunoBolsistaIntegralTest {
 
     @Test
-    void deveAceitarNumeroParcelarIsentasNaoNegativas() {
+    void deveVerificarNumeroParcelarIsentasValida() {
         Curso curso = new Curso();
         AlunoBolsistaIntegral aluno = new AlunoBolsistaIntegral(curso);
         aluno.setQuantidadeParcelasIsentas(0);
@@ -15,7 +15,7 @@ class AlunoBolsistaIntegralTest {
     }
 
     @Test
-    void deveLancarExcecaoNumeroParcelasIsentasNegativas() {
+    void deveVerificarNumeroParcelasIsentasNegativas() {
         Curso curso = new Curso();
         AlunoBolsistaIntegral aluno = new AlunoBolsistaIntegral(curso);
         try {

@@ -21,6 +21,13 @@ class ClienteTest {
     }
 
     @Test
+    void deveVerificarNomeValido(){
+        Cliente cliente = new Cliente();
+        cliente.setNome("Pedro");
+    }
+
+
+    @Test
     void deveVerificarCodigoInvalido(){
         try {
             Cliente cliente = new Cliente();
@@ -33,7 +40,14 @@ class ClienteTest {
     }
 
     @Test
-    void deveAlocarFita() {
+    void deveVerificarCodigoValido(){
+        Cliente cliente = new Cliente();
+        cliente.setCodigo(1);
+    }
+
+
+    @Test
+    void deveAlocarUmaFita() {
         Fita fita = new FitaEspecial();
         Cliente cliente = new Cliente();
         cliente.alocarFita(fita);
@@ -50,7 +64,13 @@ class ClienteTest {
     }
 
     @Test
-    void deveRetornarQuantidadeFitas() {
+    void deveAlocarZeroFitas() {
+        Cliente cliente = new Cliente();
+        assertEquals(0, cliente.getQuantidadeFitas());
+    }
+
+    @Test
+    void deveAlocarMaisDeUmaFita() {
         Fita fita1 = new FitaEspecial();
         Fita fita2 = new FitaEspecial();
         Cliente cliente = new Cliente();

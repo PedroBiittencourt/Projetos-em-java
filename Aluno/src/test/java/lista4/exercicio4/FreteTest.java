@@ -18,6 +18,13 @@ class FreteTest {
     }
 
     @Test
+    void deveVerificarNumeroValido() {
+        Frete frete = new FreteNormal();
+        frete.setNumero(1);
+        assertEquals(1, frete.getNumero());
+    }
+
+    @Test
     void deveVerificarValorFreteZeradoNegativo() {
         Frete frete = new FreteNormal();
         try {
@@ -29,6 +36,13 @@ class FreteTest {
     }
 
     @Test
+    void deveVerificarValorFreteValido() {
+        Frete frete = new FreteNormal();
+        frete.setValorFrete(0.01f);
+        assertEquals(0.01f, frete.getValorFrete(), 0.001f);
+    }
+
+    @Test
     void deveVerificarTaxaEntregaNegativa() {
         try {
             Frete frete = new FreteEspecial();
@@ -37,6 +51,13 @@ class FreteTest {
         } catch (IllegalArgumentException e) {
             assertEquals("Valor de taxa de entrega invalido", e.getMessage());
         }
+    }
+
+    @Test
+    void deveVerificarTaxaEntregaValida() {
+        Frete frete = new FreteNormal();
+        frete.setTaxaEntrega(0.01f);
+        assertEquals(0.01f, frete.getTaxaEntrega(), 0.001f);
     }
 
 }

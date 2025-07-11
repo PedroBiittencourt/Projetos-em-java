@@ -19,4 +19,11 @@ class ContaTest {
         }
     }
 
+    @Test
+    void deveVerificarSaldoValido(){
+            Conta conta = new ContaCorrenteNormal();
+            conta.setSaldoDisponivel(0.1f);
+            assertEquals(0.1f, conta.getSaldoDisponivel(), 0.001f);
+    }
+
 }

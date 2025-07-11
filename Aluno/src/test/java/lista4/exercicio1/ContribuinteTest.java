@@ -22,6 +22,12 @@ class ContribuinteTest {
     }
 
     @Test
+    void deveVerificarNomeValido(){
+        Contribuinte contribuinte = new Contribuinte();
+        contribuinte.setNome("Pedro");
+    }
+
+    @Test
     void deveVerificarCodigoInvalido(){
         try{
             Contribuinte contribuinte = new Contribuinte();
@@ -34,11 +40,23 @@ class ContribuinteTest {
     }
 
     @Test
-    void deveAlocarImovel(){
+    void deveVerificarCodigoValido(){
+        Contribuinte contribuinte = new Contribuinte();
+        contribuinte.setCodigo(1);
+    }
+
+    @Test
+    void deveAlocarUmImovel(){
         Contribuinte contribuinte = new Contribuinte();
         Imovel casa1 = new Casa();
         contribuinte.alocarImovel(casa1);
         assertEquals(1,contribuinte.getNumeroImoveis());
+    }
+
+    @Test
+    void deveRetornarZeroImoveis(){
+        Contribuinte contribuinte = new Contribuinte();
+        assertEquals(0, contribuinte.getNumeroImoveis());
     }
 
     @Test
@@ -51,7 +69,7 @@ class ContribuinteTest {
     }
 
     @Test
-    void deveRetornarNumeroImoveis(){
+    void deveAlocarMaisDeUmImovel(){
         Contribuinte contribuinte = new Contribuinte();
         Imovel casa1 = new Casa();
         Imovel casa2 = new Casa();

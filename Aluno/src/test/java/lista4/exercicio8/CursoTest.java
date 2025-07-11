@@ -21,6 +21,13 @@ class CursoTest {
     }
 
     @Test
+    void deveVerificarCodigoValido(){
+        Curso curso = new Curso();
+        curso.setCodigo(1);
+        assertEquals(1, curso.getCodigo());
+    }
+
+    @Test
     void deveVerificarCargaHorariaZeradaNegativa(){
         try {
             Curso curso = new Curso();
@@ -33,7 +40,14 @@ class CursoTest {
     }
 
     @Test
-    void deveAlocarAluno() {
+    void deveVerificarCargaHorariaValida(){
+        Curso curso = new Curso();
+        curso.setCargaHoraria(1);
+        assertEquals(1, curso.getCargaHoraria());
+    }
+
+    @Test
+    void deveAlocarUmAluno() {
         Curso curso = new Curso();
         Aluno aluno = new AlunoMensalista(curso);
         curso.alocarAluno(aluno);
@@ -50,7 +64,13 @@ class CursoTest {
     }
 
     @Test
-    void deveRetornarQuantidadeAlunos() {
+    void deveAlocarZeroAlunos() {
+        Curso curso = new Curso();
+        assertEquals(0, curso.getQuantidadeAlunos());
+    }
+
+    @Test
+    void deveAlocarMaisDeUmAluno() {
         Curso curso = new Curso();
         Aluno aluno1 = new AlunoMensalista(curso);
         Aluno aluno2 = new AlunoMensalista(curso);

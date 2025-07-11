@@ -18,6 +18,13 @@ class FreteUrgenteTest {
     }
 
     @Test
+    void deveVerificarQuantidadeItensValido() {
+        FreteUrgente frete = new FreteUrgente();
+        frete.setQuantidadeItens(1);
+        assertEquals(1, frete.getQuantidadeItens());
+    }
+
+    @Test
     void deveCalcularFrete(){
         FreteUrgente frete = new FreteUrgente();
         frete.setTaxaEntrega(1f);

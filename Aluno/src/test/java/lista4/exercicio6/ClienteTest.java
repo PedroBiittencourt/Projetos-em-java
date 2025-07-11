@@ -21,6 +21,13 @@ class ClienteTest {
     }
 
     @Test
+    void deveVerificarNomeValido(){
+        Cliente cliente = new Cliente();
+        cliente.setNome("Pedro");
+    }
+
+
+    @Test
     void deveVerificarCodigoInvalido(){
         try {
             Cliente cliente = new Cliente();
@@ -33,7 +40,14 @@ class ClienteTest {
     }
 
     @Test
-    void deveAlocarVaga() {
+    void deveVerificarCodigoValido(){
+        Cliente cliente = new Cliente();
+        cliente.setCodigo(1);
+    }
+
+
+    @Test
+    void deveAlocarUmaVaga() {
         Vaga vaga1 = new VagaDiaria();
         Cliente cliente = new Cliente();
         cliente.alocarVaga(vaga1);
@@ -50,7 +64,13 @@ class ClienteTest {
     }
 
     @Test
-    void deveRetornarNumeroVagas(){
+    void deveAlocarZeroVagas() {
+        Cliente cliente = new Cliente();
+        assertEquals(0, cliente.getNumeroVagas());
+    }
+
+    @Test
+    void deveAlocarMaisDeUmaVaga(){
         Cliente cliente = new Cliente();
         Vaga vaga1 = new VagaDiaria();
         Vaga vaga2 = new VagaDiaria();

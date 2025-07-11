@@ -21,6 +21,12 @@ class ClienteTest {
     }
 
     @Test
+    void deveVerificarNomeValido(){
+        Cliente cliente = new Cliente();
+        cliente.setNome("Pedro");
+    }
+
+    @Test
     void deveVerificarCodigoInvalido(){
         try {
             Cliente cliente = new Cliente();
@@ -33,7 +39,14 @@ class ClienteTest {
     }
 
     @Test
-    void deveAlocarManutencao() {
+    void deveVerificarCodigoValido(){
+        Cliente cliente = new Cliente();
+        cliente.setCodigo(1);
+    }
+
+
+    @Test
+    void deveAlocarUmaManutencao() {
         ManutencaoCPU manutencao1 = new ManutencaoCPU();
         Cliente cliente = new Cliente();
         cliente.alocarManutencao(manutencao1);
@@ -50,7 +63,13 @@ class ClienteTest {
     }
 
     @Test
-    void deveRetornarNumeroContas(){
+    void deveAlocarZeroManutencoes() {
+        Cliente cliente = new Cliente();
+        assertEquals(0, cliente.numeroManutencoes());
+    }
+
+    @Test
+    void deveAlocarMaisDeUmaManutencao(){
         Cliente cliente = new Cliente();
         ManutencaoCPU manutencao1 = new ManutencaoCPU();
         ManutencaoCPU manutencao2 = new ManutencaoCPU();

@@ -18,6 +18,14 @@ class AlunoMensalistaTest {
         }
     }
 
+    @Test
+    void deveVerificarValorMensalidadeValido() {
+        Curso curso = new Curso();
+        AlunoMensalista aluno = new AlunoMensalista(curso);
+        aluno.setValorMensalidade(0.01f);
+        assertEquals(0.01f, aluno.getValorMensalidade(), 0.001f);
+    }
+
 
     @Test
     void deveVerificarQuantidadeParcelasZeradoNegativo() {
@@ -29,6 +37,14 @@ class AlunoMensalistaTest {
         } catch (IllegalArgumentException e) {
             assertEquals("Quantidade de parcelas invalida", e.getMessage());
         }
+    }
+
+    @Test
+    void deveVerificarQuantidadeParcelasValido() {
+        Curso curso = new Curso();
+        AlunoMensalista aluno = new AlunoMensalista(curso);
+        aluno.setQuantidadeParcelas(1);
+        assertEquals(1, aluno.getQuantidadeParcelas());
     }
 
 }
