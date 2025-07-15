@@ -56,14 +56,7 @@ public class Hospede {
     public ArrayList<String> listaReservas() {
         ArrayList<String> resultado = new ArrayList<String>();
         for (Reserva reserva : this.reservas){
-            if(reserva.getClass().equals(QuartoSingle.class)){
-                resultado.add("Quarto single");
-            }
-            else if(reserva.getClass().equals(QuartoDuplo.class)){
-                resultado.add("Quarto duplo");
-            } else if(reserva.getClass().equals(QuartoTriplo.class)){
-                resultado.add("Quarto triplo");
-            }
+            resultado.add(reserva.getTipoReserva());
         }
         return resultado;
     }

@@ -20,6 +20,6 @@ public abstract class Conta {
     }
 
     public abstract float calcularSaldo();
-
+    public abstract String getTipoConta();
 
 }

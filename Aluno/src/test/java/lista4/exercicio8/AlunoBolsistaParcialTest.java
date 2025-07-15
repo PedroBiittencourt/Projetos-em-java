@@ -6,47 +6,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class AlunoBolsistaParcialTest {
 
-
-    @Test
-    void deveVerificarValorMensalidadeZeradoNegativo() {
-        Curso curso = new Curso();
-        AlunoBolsistaParcial aluno = new AlunoBolsistaParcial(curso);
-        try {
-            aluno.setValorMensalidade(0);
-            fail();
-        } catch (IllegalArgumentException e) {
-            assertEquals("Valor de mensalidade invalida", e.getMessage());
-        }
-    }
-
-    @Test
-    void deveVerificarValorMensalidadeValido() {
-        Curso curso = new Curso();
-        AlunoBolsistaParcial aluno = new AlunoBolsistaParcial(curso);
-        aluno.setValorMensalidade(0.01f);
-        assertEquals(0.01f, aluno.getValorMensalidade(), 0.001f);
-    }
-
-    @Test
-    void deveVerificarQuantidadeParcelasZeradoNegativo() {
-        Curso curso = new Curso();
-        AlunoBolsistaParcial aluno = new AlunoBolsistaParcial(curso);
-        try {
-            aluno.setQuantidadeParcelas(0);
-            fail();
-        } catch (IllegalArgumentException e) {
-            assertEquals("Quantidade de parcelas invalida", e.getMessage());
-        }
-    }
-
-    @Test
-    void deveVerificarQuantidadeParcelasValido() {
-        Curso curso = new Curso();
-        AlunoBolsistaParcial aluno = new AlunoBolsistaParcial(curso);
-        aluno.setQuantidadeParcelas(1);
-        assertEquals(1, aluno.getQuantidadeParcelas());
-    }
-
     @Test
     void deveVerificarPercentualDescontoZeradoNegativo() {
         Curso curso = new Curso();
@@ -78,6 +37,26 @@ class AlunoBolsistaParcialTest {
         AlunoBolsistaParcial aluno = new AlunoBolsistaParcial(curso);
         aluno.setPercentualDesconto(0.01f);
         assertEquals(0.01f, aluno.getPercentualDesconto(), 0.001f);
+    }
+
+    @Test
+    void deveRetornarTipoAluno(){
+        AlunoBolsistaParcial aluno = new AlunoBolsistaParcial(new Curso());
+        assertEquals("Bolsista parcial", aluno.getTipoAluno());
+    }
+
+    @Test
+    void deveRetornarDadosAluno(){
+        AlunoBolsistaParcial aluno2 = new AlunoBolsistaParcial(new Curso());
+        aluno2.setNome("Pedro");
+        aluno2.setMatricula(321);
+        aluno2.setEndereco("Rua B");
+        aluno2.setValorMensalidade(100);
+        aluno2.setPercentualDesconto(10);
+        aluno2.setQuantidadeParcelas(10);
+        assertEquals("Aluno: Pedro. Matricula: 321. Endereco: Rua B" +
+                ". Tipo: Bolsista parcial. Valor mensalidade: R$90.0" +
+                ". Percentual de desconto: 10.0%. Quantidade parcelas: 10.", aluno2.getDadosAluno());
     }
 
 }

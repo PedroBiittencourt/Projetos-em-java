@@ -5,10 +5,34 @@ public abstract class Aluno {
     private String nome;
     private String endereco;
     private Curso curso;
+    private float valorMensalidade;
+    private int quantidadeParcelas;
 
     public Aluno(Curso curso) {
         this.matricula = 0;
         this.curso = curso;
+    }
+
+    public float getValorMensalidade() {
+        return this.valorMensalidade;
+    }
+
+    public void setValorMensalidade(float valorMensalidade) {
+        if (valorMensalidade <= 0) {
+            throw new IllegalArgumentException("Valor de mensalidade invalido");
+        }
+        this.valorMensalidade = valorMensalidade;
+    }
+
+    public int getQuantidadeParcelas() {
+        return this.quantidadeParcelas;
+    }
+
+    public void setQuantidadeParcelas(int quantidadeParcelas) {
+        if (quantidadeParcelas <= 0) {
+            throw new IllegalArgumentException("Quantidade de parcelas invalida");
+        }
+        this.quantidadeParcelas = quantidadeParcelas;
     }
 
     public int getMatricula() {
@@ -55,4 +79,8 @@ public abstract class Aluno {
     public int getCodigoCurso() {
         return curso.getCodigo();
     }
+
+    public abstract String getTipoAluno();
+    public abstract String getDadosAluno();
+
 }

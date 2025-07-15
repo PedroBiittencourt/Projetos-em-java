@@ -14,4 +14,10 @@ class QuartoTriploTest {
         assertEquals(110, q1.calcularPreco());
     }
 
+    @Test
+    void deveRetornarTipoReserva(){
+        QuartoTriplo q1 = new QuartoTriplo();
+        assertEquals("Quarto triplo", q1.getTipoReserva());
+    }
+
 }

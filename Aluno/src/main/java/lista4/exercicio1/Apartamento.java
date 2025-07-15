@@ -28,4 +28,9 @@ public class Apartamento extends Imovel{
             return (getQuantidadeMetroQuadrado() * getPrecoMetroQuadrado()) - ((getQuantidadeMetroQuadrado() * getPrecoMetroQuadrado()) * ((this.quantidadeAndar-1) * 0.1f));
         }
     }
+
+    public String getTipoImovel(){
+        return "Apartamento";
+    }
+
 }

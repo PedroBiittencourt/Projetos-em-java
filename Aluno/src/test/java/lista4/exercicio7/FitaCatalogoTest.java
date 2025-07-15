@@ -13,4 +13,10 @@ class FitaCatalogoTest {
         assertEquals(5, fita.calcularValorEmprestimo());
     }
 
+    @Test
+    void deveRetornarTipoFita(){
+        FitaCatalogo fita = new FitaCatalogo();
+        assertEquals("Fita Catalogo", fita.getTipoFita());
+    }
+
 }

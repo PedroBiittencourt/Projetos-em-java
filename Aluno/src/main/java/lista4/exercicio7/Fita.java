@@ -55,4 +55,5 @@ public abstract class Fita {
     }
 
     public abstract float calcularValorEmprestimo();
+    public abstract String getTipoFita();
 }

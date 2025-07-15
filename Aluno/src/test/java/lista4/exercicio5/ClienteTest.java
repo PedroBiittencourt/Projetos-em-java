@@ -116,8 +116,8 @@ class ClienteTest {
 
         ArrayList<String> esperado = new ArrayList<String>();
         esperado.add("Manutenção de CPU");
-        esperado.add("Manutençãoo de Impressora");
-        esperado.add("Manutençãoo de Monitor");
+        esperado.add("Manutenção de Impressora");
+        esperado.add("Manutenção de Monitor");
         assertEquals(esperado, cliente.listaManutencao());
     }
 

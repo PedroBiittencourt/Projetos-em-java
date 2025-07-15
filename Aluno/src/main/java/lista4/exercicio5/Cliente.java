@@ -55,13 +55,7 @@ public class Cliente {
     public ArrayList<String> listaManutencao() {
         ArrayList<String> resultado = new ArrayList<String>();
         for (Manutencao manutencao : manutencoes) {
-            if (manutencao.getClass().equals(ManutencaoCPU.class)) {
-                resultado.add("Manutenção de CPU");
-            } else if (manutencao.getClass().equals(ManutencaoMonitor.class)) {
-                resultado.add("Manutençãoo de Monitor");
-            } else if (manutencao.getClass().equals(ManutencaoImpressora.class)) {
-                resultado.add("Manutençãoo de Impressora");
-            }
+            resultado.add(manutencao.getTipoManutencao());
         }
         return resultado;
     }

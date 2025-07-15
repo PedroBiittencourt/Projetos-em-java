@@ -13,4 +13,10 @@ class ManutencaoMonitorTest {
         assertEquals(1, manutencao.calcularValor());
     }
 
+    @Test
+    void deveRetornarTipoManutencao(){
+        ManutencaoMonitor manutencao = new ManutencaoMonitor();
+        assertEquals("Manutenção de Monitor", manutencao.getTipoManutencao());
+    }
+
 }

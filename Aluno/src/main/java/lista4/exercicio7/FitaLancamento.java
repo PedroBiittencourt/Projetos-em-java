@@ -9,4 +9,9 @@ public class FitaLancamento extends Fita {
     public float calcularValorEmprestimo() {
         return (getQuantidadeDiasEmprestimo() * getValorAluguelDiario());
     }
+
+    public String getTipoFita(){
+        return "Fita Lancamento";
+    }
+
 }

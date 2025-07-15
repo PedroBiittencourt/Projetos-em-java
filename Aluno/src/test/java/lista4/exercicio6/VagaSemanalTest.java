@@ -32,4 +32,10 @@ class VagaSemanalTest {
         assertEquals(40, vaga.calcularAluguel());
     }
 
+    @Test
+    void deveRetornarTipoVaga(){
+        VagaSemanal vaga = new VagaSemanal();
+        assertEquals("Vaga semanal", vaga.getTipoVaga());
+    }
+
 }

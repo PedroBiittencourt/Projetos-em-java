@@ -13,4 +13,10 @@ class FreteNormalTest {
         assertEquals(1, frete.calcularFrete());
     }
 
+    @Test
+    void deveRetornarTipoFrete(){
+        FreteNormal frete = new FreteNormal();
+        assertEquals("Frete normal", frete.getTipoFrete());
+    }
+
 }

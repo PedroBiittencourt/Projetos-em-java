@@ -64,14 +64,7 @@ public class Contribuinte {
     public ArrayList<String> getImoveisPorCliente() {
         ArrayList<String> resultado = new ArrayList<String>();
         for (Imovel imovel : this.imoveis) {
-            if (imovel.getClass() == Lote.class) {
-                resultado.add("Lote");
-            } else if (imovel.getClass() == Casa.class) {
-                resultado.add("Casa");
-            } else if (imovel.getClass() == Apartamento.class) {
-                resultado.add("Apartamento");
-            }
-        }
+            resultado.add(imovel.getTipoImovel());        }
         return resultado;
     }
 

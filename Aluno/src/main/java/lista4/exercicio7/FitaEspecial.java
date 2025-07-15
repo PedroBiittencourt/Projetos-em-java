@@ -11,4 +11,9 @@ public class FitaEspecial extends Fita {
     public float calcularValorEmprestimo() {
         return (getQuantidadeDiasEmprestimo() * getValorAluguelDiario());
     }
+
+    public String getTipoFita(){
+        return "Fita Especial";
+    }
+
 }

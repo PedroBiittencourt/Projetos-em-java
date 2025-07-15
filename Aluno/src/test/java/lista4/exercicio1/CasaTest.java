@@ -12,4 +12,11 @@ class CasaTest {
         casa1.setQuantidadeMetroQuadrado(1);
         assertEquals(80, casa1.calcularValor());
     }
+
+    @Test
+    void deveRetornarTipoImovel(){
+        Casa casa1 = new Casa();
+        assertEquals("Casa", casa1.getTipoImovel());
+    }
+
 }

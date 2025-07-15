@@ -13,4 +13,10 @@ class ContaCorrenteNormalTest {
         assertEquals(1, conta.calcularSaldo());
     }
 
+    @Test
+    void deveRetornarTipoConta(){
+        ContaCorrenteNormal conta = new ContaCorrenteNormal();
+        assertEquals("Normal", conta.getTipoConta());
+    }
+
 }

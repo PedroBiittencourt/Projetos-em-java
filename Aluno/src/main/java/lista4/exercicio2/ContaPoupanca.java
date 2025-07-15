@@ -9,4 +9,9 @@ public class ContaPoupanca extends Conta{
     public float calcularSaldo() {
         return this.getSaldoDisponivel();
     }
+
+    public String getTipoConta(){
+        return "Poupança";
+    }
+
 }

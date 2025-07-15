@@ -55,13 +55,7 @@ public class Cliente {
     public ArrayList<String> listaFitas() {
         ArrayList<String> resultado = new ArrayList<String>();
         for (Fita fita : fitas) {
-            if (fita.getClass().equals(FitaCatalogo.class)) {
-                resultado.add("Fita Catalogo");
-            } else if (fita.getClass().equals(FitaLancamento.class)) {
-                resultado.add("Fita Lancamento");
-            } else if (fita.getClass().equals(FitaEspecial.class)) {
-                resultado.add("Fita Especial");
-            }
+            resultado.add(fita.getTipoFita());
         }
         return resultado;
     }

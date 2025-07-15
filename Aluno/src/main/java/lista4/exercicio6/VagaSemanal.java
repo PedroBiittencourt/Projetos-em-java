@@ -22,4 +22,9 @@ public class VagaSemanal extends Vaga {
     public float calcularAluguel(){
         return (this.quantidadeSemanas * 40);
     }
+
+    public String getTipoVaga(){
+        return "Vaga semanal";
+    }
+
 }

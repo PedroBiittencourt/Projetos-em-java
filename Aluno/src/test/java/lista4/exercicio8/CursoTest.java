@@ -110,15 +110,14 @@ class CursoTest {
         curso.alocarAluno(aluno3);
 
         ArrayList<String> resultadoEsperado = new ArrayList<String>();
-        resultadoEsperado.add("O aluno Guilherme, de matrícula 123 e " +
-                "endereço Rua A, é mensalista e tem valor de mensalidade " +
-                "a ser pago de 100.0, em 10 parcelas.");
-        resultadoEsperado.add("O aluno Pedro, de matrícula 321 e " +
-                "endereço Rua B, é bolsista parcial e tem valor de mensalidade " +
-                "a ser pago de 90.0, em 10 parcelas.");
-        resultadoEsperado.add("O aluno Marco, de matrícula 777 e " +
-                "endereço Rua X, é bolsista integral e não paga mensalidade, " +
-                "tendo 10 parcelas isentas.");
+        resultadoEsperado.add("Aluno: Guilherme. Matricula: 123. Endereco: Rua A" +
+                ". Tipo: Mensalista. Valor mensalidade: R$100.0" +
+                ". Quantidade parcelas: 10.");
+        resultadoEsperado.add("Aluno: Pedro. Matricula: 321. Endereco: Rua B" +
+                ". Tipo: Bolsista parcial. Valor mensalidade: R$90.0" +
+                ". Percentual de desconto: 10.0%. Quantidade parcelas: 10.");
+        resultadoEsperado.add("Aluno: Marco. Matricula: 777. Endereco: Rua X" +
+                ". Tipo: Bolsista integral. Parcelas isentas: 10.");
 
         assertEquals(resultadoEsperado, curso.listaAlunos());
     }
@@ -130,14 +129,14 @@ class CursoTest {
         Curso curso2 = new Curso();
         curso2.setCodigo(2);
 
-        AlunoMensalista aluno1 = new AlunoMensalista(curso1);
+        AlunoMensalista aluno1 = new AlunoMensalista(curso2);
         aluno1.setNome("Guilherme");
         aluno1.setMatricula(123);
         aluno1.setEndereco("Rua A");
         aluno1.setValorMensalidade(100);
         aluno1.setQuantidadeParcelas(10);
 
-        AlunoBolsistaParcial aluno2 = new AlunoBolsistaParcial(curso2);
+        AlunoBolsistaParcial aluno2 = new AlunoBolsistaParcial(curso1);
         aluno2.setNome("Pedro");
         aluno2.setMatricula(321);
         aluno2.setEndereco("Rua B");
@@ -149,9 +148,9 @@ class CursoTest {
         curso1.alocarAluno(aluno2);
 
         ArrayList<String> resultadoEsperado = new ArrayList<String>();
-        resultadoEsperado.add("O aluno Guilherme, de matrícula 123 e endereço " +
-                "Rua A, é mensalista e tem valor de mensalidade a ser pago de " +
-                "100.0, em 10 parcelas.");
+        resultadoEsperado.add("Aluno: Pedro. Matricula: 321. Endereco: Rua B" +
+                ". Tipo: Bolsista parcial. Valor mensalidade: R$90.0" +
+                ". Percentual de desconto: 10.0%. Quantidade parcelas: 10.");
 
         assertEquals(resultadoEsperado, curso1.listaAlunosCurso(1));
     }

@@ -14,4 +14,10 @@ class FitaEspecialTest {
         assertEquals(2, fita.calcularValorEmprestimo());
     }
 
+    @Test
+    void deveRetornarTipoFita(){
+        FitaEspecial fita = new FitaEspecial();
+        assertEquals("Fita Especial", fita.getTipoFita());
+    }
+
 }

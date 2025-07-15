@@ -55,13 +55,7 @@ public class Cliente {
     public ArrayList<String> listaVagas() {
         ArrayList<String> resultado = new ArrayList<String>();
         for (Vaga vaga : vagas) {
-            if (vaga.getClass().equals(VagaDiaria.class)) {
-                resultado.add("Vaga diária");
-            } else if (vaga.getClass().equals(VagaSemanal.class)) {
-                resultado.add("Vaga semanal");
-            } else if (vaga.getClass().equals(VagaMensal.class)) {
-                resultado.add("Vaga mensal");
-            }
+            resultado.add(vaga.getTipoVaga());
         }
         return resultado;
     }

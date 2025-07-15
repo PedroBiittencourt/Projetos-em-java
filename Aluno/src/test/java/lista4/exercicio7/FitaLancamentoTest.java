@@ -14,4 +14,10 @@ class FitaLancamentoTest {
         assertEquals(2, fita.calcularValorEmprestimo());
     }
 
+    @Test
+    void deveRetornarTipoFita(){
+        FitaLancamento fita = new FitaLancamento();
+        assertEquals("Fita Lancamento", fita.getTipoFita());
+    }
+
 }

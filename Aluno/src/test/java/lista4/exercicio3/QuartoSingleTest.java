@@ -13,4 +13,10 @@ class QuartoSingleTest {
         assertEquals(50, q1.calcularPreco());
     }
 
+    @Test
+    void deveRetornarTipoReserva(){
+        QuartoSingle q1 = new QuartoSingle();
+        assertEquals("Quarto single", q1.getTipoReserva());
+    }
+
 }

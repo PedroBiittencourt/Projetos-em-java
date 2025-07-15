@@ -31,4 +31,5 @@ public abstract class Vaga {
     }
 
     public abstract float calcularAluguel();
+    public abstract String getTipoVaga();
 }

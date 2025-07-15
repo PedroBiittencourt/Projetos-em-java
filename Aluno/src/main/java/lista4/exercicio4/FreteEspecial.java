@@ -9,4 +9,9 @@ public class FreteEspecial extends Frete{
     public float calcularFrete() {
         return (getValorFrete() + getTaxaEntrega());
     }
+
+    public String getTipoFrete(){
+        return "Frete especial";
+    }
+
 }

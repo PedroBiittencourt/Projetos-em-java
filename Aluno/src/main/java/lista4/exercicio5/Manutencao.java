@@ -45,6 +45,6 @@ public abstract class Manutencao {
     }
 
     public abstract float calcularValor();
-
+    public abstract String getTipoManutencao();
 
 }

@@ -9,4 +9,9 @@ public class FreteNormal extends Frete {
     public float calcularFrete() {
         return getValorFrete();
     }
+
+    public String getTipoFrete(){
+        return "Frete normal";
+    }
+
 }

@@ -36,5 +36,10 @@ class ApartamentoTest {
         }
     }
 
+    @Test
+    void deveRetornarTipoImovel(){
+        Apartamento apt = new Apartamento();
+        assertEquals("Apartamento", apt.getTipoImovel());
+    }
 
 }

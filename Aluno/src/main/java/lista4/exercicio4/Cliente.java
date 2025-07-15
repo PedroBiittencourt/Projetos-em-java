@@ -55,13 +55,7 @@ public class Cliente {
     public ArrayList<String> retornarFretesCliente() {
         ArrayList<String> resultado = new ArrayList<String>();
         for (Frete frete : fretes) {
-            if (frete.getClass().equals(FreteNormal.class)) {
-                resultado.add("Frete normal");
-            } else if (frete.getClass().equals(FreteEspecial.class)) {
-                resultado.add("Frete especial");
-            } else if (frete.getClass().equals(FreteUrgente.class)) {
-                resultado.add("Frete urgente");
-            }
+            resultado.add(frete.getTipoFrete());
         }
         return resultado;
     }

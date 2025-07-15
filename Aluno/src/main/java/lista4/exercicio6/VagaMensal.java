@@ -22,4 +22,9 @@ public class VagaMensal extends Vaga {
     public float calcularAluguel(){
         return (this.quantidadeMeses * 150);
     }
+
+    public String getTipoVaga(){
+        return "Vaga mensal";
+    }
+
 }

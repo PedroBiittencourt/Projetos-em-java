@@ -7,44 +7,22 @@ import static org.junit.jupiter.api.Assertions.*;
 class AlunoMensalistaTest {
 
     @Test
-    void deveVerificarValorMensalidadeZeradoNegativo() {
-        Curso curso = new Curso();
-        AlunoMensalista aluno = new AlunoMensalista(curso);
-        try {
-            aluno.setValorMensalidade(0);
-            fail();
-        } catch (IllegalArgumentException e) {
-            assertEquals("Valor de mensalidade invalida", e.getMessage());
-        }
+    void deveRetornarTipoAluno(){
+        AlunoMensalista aluno = new AlunoMensalista(new Curso());
+        assertEquals("Mensalista", aluno.getTipoAluno());
     }
 
     @Test
-    void deveVerificarValorMensalidadeValido() {
-        Curso curso = new Curso();
-        AlunoMensalista aluno = new AlunoMensalista(curso);
-        aluno.setValorMensalidade(0.01f);
-        assertEquals(0.01f, aluno.getValorMensalidade(), 0.001f);
-    }
-
-
-    @Test
-    void deveVerificarQuantidadeParcelasZeradoNegativo() {
-        Curso curso = new Curso();
-        AlunoMensalista aluno = new AlunoMensalista(curso);
-        try {
-            aluno.setQuantidadeParcelas(0);
-            fail();
-        } catch (IllegalArgumentException e) {
-            assertEquals("Quantidade de parcelas invalida", e.getMessage());
-        }
-    }
-
-    @Test
-    void deveVerificarQuantidadeParcelasValido() {
-        Curso curso = new Curso();
-        AlunoMensalista aluno = new AlunoMensalista(curso);
-        aluno.setQuantidadeParcelas(1);
-        assertEquals(1, aluno.getQuantidadeParcelas());
+    void deveRetornarDadosAluno(){
+        AlunoMensalista aluno1 = new AlunoMensalista(new Curso());
+        aluno1.setNome("Guilherme");
+        aluno1.setMatricula(123);
+        aluno1.setEndereco("Rua A");
+        aluno1.setValorMensalidade(100);
+        aluno1.setQuantidadeParcelas(10);
+        assertEquals("Aluno: Guilherme. Matricula: 123. Endereco: Rua A" +
+                ". Tipo: Mensalista. Valor mensalidade: R$100.0" +
+                ". Quantidade parcelas: 10.", aluno1.getDadosAluno());
     }
 
 }

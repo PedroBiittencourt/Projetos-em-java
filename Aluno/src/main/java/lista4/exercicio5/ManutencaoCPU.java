@@ -9,4 +9,9 @@ public class ManutencaoCPU extends Manutencao {
     public float calcularValor() {
         return (getValorPecasTrocadas() + getValorMaoDeObra());
     }
+
+    public String getTipoManutencao(){
+        return "Manutenção de CPU";
+    }
+
 }

@@ -34,4 +34,10 @@ class ContaCorrenteEspecialTest {
         assertEquals(2, conta.calcularSaldo());
     }
 
+    @Test
+    void deveRetornarTipoConta(){
+        ContaCorrenteEspecial conta = new ContaCorrenteEspecial();
+        assertEquals("Especial", conta.getTipoConta());
+    }
+
 }

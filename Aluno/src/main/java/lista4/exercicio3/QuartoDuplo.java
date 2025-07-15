@@ -10,4 +10,8 @@ public class QuartoDuplo extends Reserva{
         return (getNumeroDias() * 80) + (getNumeroRefeicoes() * 10);
     }
 
+    public String getTipoReserva(){
+        return "Quarto duplo";
+    }
+
 }

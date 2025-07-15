@@ -14,4 +14,10 @@ class QuartoDuploTest {
         assertEquals(90, q1.calcularPreco());
     }
 
+    @Test
+    void deveRetornarTipoReserva(){
+        QuartoDuplo q1 = new QuartoDuplo();
+        assertEquals("Quarto duplo", q1.getTipoReserva());
+    }
+
 }

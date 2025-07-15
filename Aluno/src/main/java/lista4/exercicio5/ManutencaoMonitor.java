@@ -9,4 +9,9 @@ public class ManutencaoMonitor extends Manutencao {
     public float calcularValor() {
         return getValorMaoDeObra();
     }
+
+    public String getTipoManutencao(){
+        return "Manutenção de Monitor";
+    }
+
 }

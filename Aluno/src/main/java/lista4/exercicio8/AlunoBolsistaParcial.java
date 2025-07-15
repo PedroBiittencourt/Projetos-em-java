@@ -2,37 +2,12 @@ package lista4.exercicio8;
 
 public class AlunoBolsistaParcial extends Aluno {
 
-    private float valorMensalidade;
-    private int quantidadeParcelas;
     private float percentualDesconto;
 
     public AlunoBolsistaParcial(Curso curso) {
         super(curso);
-        this.valorMensalidade = 0;
-        this.quantidadeParcelas = 0;
     }
 
-    public float getValorMensalidade() {
-        return this.valorMensalidade;
-    }
-
-    public void setValorMensalidade(float valorMensalidade) {
-        if (valorMensalidade <= 0) {
-            throw new IllegalArgumentException("Valor de mensalidade invalida");
-        }
-        this.valorMensalidade = valorMensalidade;
-    }
-
-    public int getQuantidadeParcelas() {
-        return this.quantidadeParcelas;
-    }
-
-    public void setQuantidadeParcelas(int quantidadeParcelas) {
-        if (quantidadeParcelas <= 0) {
-            throw new IllegalArgumentException("Quantidade de parcelas invalida");
-        }
-        this.quantidadeParcelas = quantidadeParcelas;
-    }
 
     public float getPercentualDesconto() {
         return percentualDesconto;
@@ -48,7 +23,18 @@ public class AlunoBolsistaParcial extends Aluno {
     }
 
     public float calcularMensalidade() {
-        return (this.valorMensalidade - (this.valorMensalidade * (this.percentualDesconto/100)));
+        return (getValorMensalidade() - (getValorMensalidade() * (this.percentualDesconto/100)));
+    }
+
+    public String getTipoAluno(){
+        return "Bolsista parcial";
+    }
+
+    public String getDadosAluno(){
+        return "Aluno: " + getNome() + ". Matricula: " + getMatricula() + ". Endereco: " + getEndereco() +
+                ". Tipo: " + getTipoAluno() + ". Valor mensalidade: R$" + this.calcularMensalidade() +
+                ". Percentual de desconto: " + this.percentualDesconto + "%" +
+                ". Quantidade parcelas: " + getQuantidadeParcelas() + ".";
     }
 
 }

@@ -33,4 +33,10 @@ class FreteUrgenteTest {
         assertEquals(12, frete.calcularFrete());
     }
 
+    @Test
+    void deveRetornarTipoFrete(){
+        FreteUrgente frete = new FreteUrgente();
+        assertEquals("Frete urgente", frete.getTipoFrete());
+    }
+
 }

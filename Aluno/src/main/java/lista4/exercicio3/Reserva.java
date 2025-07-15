@@ -33,5 +33,6 @@ public abstract class Reserva {
     }
 
     public abstract float calcularPreco();
+    public abstract String getTipoReserva();
 
 }

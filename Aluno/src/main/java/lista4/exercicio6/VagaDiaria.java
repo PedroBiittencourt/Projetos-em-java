@@ -22,4 +22,9 @@ public class VagaDiaria extends Vaga {
     public float calcularAluguel(){
         return (this.quantidadeDias * 10);
     }
+
+    public String getTipoVaga(){
+        return "Vaga diária";
+    }
+
 }

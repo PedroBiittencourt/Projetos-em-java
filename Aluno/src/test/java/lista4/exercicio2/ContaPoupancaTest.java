@@ -13,4 +13,10 @@ class ContaPoupancaTest {
         assertEquals(1, conta.calcularSaldo());
     }
 
+    @Test
+    void deveRetornarTipoConta(){
+        ContaPoupanca conta = new ContaPoupanca();
+        assertEquals("Poupança", conta.getTipoConta());
+    }
+
 }

@@ -14,4 +14,10 @@ class LoteTest {
         assertEquals(30, lote1.calcularValor());
     }
 
+    @Test
+    void deveRetornarTipoImovel(){
+        Lote lote1 = new Lote();
+        assertEquals("Lote", lote1.getTipoImovel());
+    }
+
 }

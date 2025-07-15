@@ -68,25 +68,7 @@ public class Curso {
     public ArrayList<String> listaAlunos() {
         ArrayList<String> resultado = new ArrayList<String>();
         for (Aluno aluno : alunos) {
-            if (aluno.getClass().equals(AlunoMensalista.class)) {
-                resultado.add("O aluno " + aluno.getNome() + ", de matrícula " +
-                        aluno.getMatricula() + " e endereço " + aluno.getEndereco() +
-                        ", é mensalista e tem valor de mensalidade a ser pago de " +
-                        ((AlunoMensalista) aluno).getValorMensalidade() + ", em " +
-                        ((AlunoMensalista) aluno).getQuantidadeParcelas() + " parcelas.");
-            } else if (aluno.getClass().equals(AlunoBolsistaParcial.class)) {
-                resultado.add("O aluno " + aluno.getNome() + ", de matrícula " +
-                        aluno.getMatricula() + " e endereço " + aluno.getEndereco() +
-                        ", é bolsista parcial e tem valor de mensalidade a ser pago de " +
-                        ((AlunoBolsistaParcial) aluno).calcularMensalidade() + ", em " +
-                        ((AlunoBolsistaParcial) aluno).getQuantidadeParcelas() + " parcelas.");
-            } else if (aluno.getClass().equals(AlunoBolsistaIntegral.class)) {
-                resultado.add("O aluno " + aluno.getNome() + ", de matrícula " +
-                        aluno.getMatricula() + " e endereço " + aluno.getEndereco() +
-                        ", é bolsista integral e não paga mensalidade, tendo " +
-                        ((AlunoBolsistaIntegral) aluno).getQuantidadeParcelasIsentas() +
-                        " parcelas isentas.");
-            }
+            resultado.add(aluno.getDadosAluno());
         }
         return resultado;
     }
@@ -95,25 +77,7 @@ public class Curso {
         ArrayList<String> resultado = new ArrayList<String>();
         for (Aluno aluno : alunos) {
             if (aluno.getCodigoCurso() == codigo) {
-                if (aluno.getClass().equals(AlunoMensalista.class)) {
-                    resultado.add("O aluno " + aluno.getNome() + ", de matrícula " +
-                            aluno.getMatricula() + " e endereço " + aluno.getEndereco() +
-                            ", é mensalista e tem valor de mensalidade a ser pago de " +
-                            ((AlunoMensalista) aluno).getValorMensalidade() + ", em " +
-                            ((AlunoMensalista) aluno).getQuantidadeParcelas() + " parcelas.");
-                } else if (aluno.getClass().equals(AlunoBolsistaParcial.class)) {
-                    resultado.add("O aluno " + aluno.getNome() + ", de matrícula " +
-                            aluno.getMatricula() + " e endereço " + aluno.getEndereco() +
-                            ", é bolsista parcial e tem valor de mensalidade a ser pago de " +
-                            ((AlunoBolsistaParcial) aluno).calcularMensalidade() + ", em " +
-                            ((AlunoBolsistaParcial) aluno).getQuantidadeParcelas() + " parcelas.");
-                } else if (aluno.getClass().equals(AlunoBolsistaIntegral.class)) {
-                    resultado.add("O aluno " + aluno.getNome() + ", de matrícula " +
-                            aluno.getMatricula() + " e endereço " + aluno.getEndereco() +
-                            ", é bolsista integral e não paga mensalidade, tendo " +
-                            ((AlunoBolsistaIntegral) aluno).getQuantidadeParcelasIsentas() +
-                            " parcelas isentas.");
-                }
+                resultado.add(aluno.getDadosAluno());
             }
         }
         return resultado;

@@ -14,4 +14,10 @@ class ManutencaoCPUTest {
         assertEquals(2, manutencao.calcularValor());
     }
 
+    @Test
+    void deveRetornarTipoManutencao(){
+        ManutencaoCPU manutencao = new ManutencaoCPU();
+        assertEquals("Manutenção de CPU", manutencao.getTipoManutencao());
+    }
+
 }

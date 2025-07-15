@@ -23,4 +23,9 @@ public class FreteUrgente extends Frete{
     public float calcularFrete() {
         return (getValorFrete() + getTaxaEntrega() + (this.quantidadeItens * 10));
     }
+
+    public String getTipoFrete(){
+        return "Frete urgente";
+    }
+
 }

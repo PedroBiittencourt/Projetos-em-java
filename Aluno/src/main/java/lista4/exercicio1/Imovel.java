@@ -32,5 +32,5 @@ public abstract class Imovel {
     }
 
     public abstract float calcularValor();
-
+    public abstract String getTipoImovel();
 }

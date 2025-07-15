@@ -10,4 +10,8 @@ public class QuartoSingle extends Reserva{
         return getNumeroDias() * 50;
     }
 
+    public String getTipoReserva(){
+        return "Quarto single";
+    }
+
 }

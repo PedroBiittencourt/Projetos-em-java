@@ -10,4 +10,8 @@ public class Lote extends Imovel{
         return getQuantidadeMetroQuadrado() * getPrecoMetroQuadrado();
     }
 
+    public String getTipoImovel(){
+        return "Lote";
+    }
+
 }

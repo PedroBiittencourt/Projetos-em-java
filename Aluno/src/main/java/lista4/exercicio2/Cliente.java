@@ -64,13 +64,7 @@ public class Cliente {
     public ArrayList<String> listaContas() {
         ArrayList<String> resultado = new ArrayList<String>();
         for (Conta conta : this.contas) {
-            if (conta.getClass().equals(ContaCorrenteNormal.class)) {
-                resultado.add("Normal");
-            } else if (conta.getClass().equals(ContaCorrenteEspecial.class)) {
-                resultado.add("Especial");
-            } else if (conta.getClass().equals(ContaPoupanca.class)) {
-                resultado.add("Poupança");
-            }
+            resultado.add(conta.getTipoConta());
         }
         return resultado;
     }

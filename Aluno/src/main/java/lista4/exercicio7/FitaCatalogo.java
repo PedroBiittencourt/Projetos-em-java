@@ -9,4 +9,9 @@ public class FitaCatalogo extends Fita {
     public float calcularValorEmprestimo() {
         return (getQuantidadeDiasEmprestimo() * 5);
     }
+
+    public String getTipoFita(){
+        return "Fita Catalogo";
+    }
+
 }

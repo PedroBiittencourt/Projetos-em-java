@@ -19,4 +19,14 @@ public class AlunoBolsistaIntegral extends Aluno {
         }
         this.quantidadeParcelasIsentas = quantidadeParcelasIsentas;
     }
+
+    public String getTipoAluno(){
+        return "Bolsista integral";
+    }
+
+    public String getDadosAluno(){
+        return "Aluno: " + getNome() + ". Matricula: " + getMatricula() + ". Endereco: " + getEndereco() +
+                ". Tipo: " + getTipoAluno() + ". Parcelas isentas: " + this.quantidadeParcelasIsentas + ".";
+    }
+
 }

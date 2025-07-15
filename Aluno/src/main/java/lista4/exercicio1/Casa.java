@@ -10,4 +10,8 @@ public class Casa extends Imovel{
         return (getQuantidadeMetroQuadrado() * getPrecoMetroQuadrado()) + (getQuantidadeMetroQuadrado() * 50);
     }
 
+    public String getTipoImovel(){
+        return "Casa";
+    }
+
 }

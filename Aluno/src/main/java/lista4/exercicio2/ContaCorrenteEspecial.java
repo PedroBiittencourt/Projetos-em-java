@@ -24,4 +24,8 @@ public class ContaCorrenteEspecial extends Conta{
         return getSaldoDisponivel() + this.limiteCredito;
     }
 
+    public String getTipoConta(){
+        return "Especial";
+    }
+
 }

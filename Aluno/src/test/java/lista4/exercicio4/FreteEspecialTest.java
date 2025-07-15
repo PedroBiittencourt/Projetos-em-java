@@ -14,4 +14,10 @@ class FreteEspecialTest {
         assertEquals(2, frete.calcularFrete());
     }
 
+    @Test
+    void deveRetornarTipoFrete(){
+        FreteEspecial frete = new FreteEspecial();
+        assertEquals("Frete especial", frete.getTipoFrete());
+    }
+
 }

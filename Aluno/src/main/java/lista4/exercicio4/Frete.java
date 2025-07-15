@@ -46,4 +46,5 @@ public abstract class Frete {
     }
 
     public abstract float calcularFrete();
+    public abstract String getTipoFrete();
 }
