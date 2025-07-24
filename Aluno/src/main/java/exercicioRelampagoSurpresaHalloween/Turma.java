@@ -8,7 +8,9 @@ public class Turma {
     private ArrayList<Aluno> alunos;
     private Disciplina disciplina;
 
-    public Turma(){
+    public Turma(Professor professor, Disciplina disciplina){
+        setProfessor(professor);
+        setDisciplina(disciplina);
         this.alunos = new ArrayList<Aluno>();
     }
 

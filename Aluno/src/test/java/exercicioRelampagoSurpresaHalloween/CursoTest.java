@@ -10,7 +10,7 @@ class CursoTest {
 
     @Test
     void deveAlocarUmaTurma() {
-        Turma turma = new Turma();
+        Turma turma = new Turma(new Professor("Marco"), new Disciplina("LP1"));
         Curso curso = new Curso();
         curso.alocarTurma(turma);
         assertEquals(1,curso.numeroTurmas());
@@ -18,7 +18,7 @@ class CursoTest {
 
     @Test
     void deveNaoAlocarTurmaRepetida(){
-        Turma turma = new Turma();
+        Turma turma = new Turma(new Professor("Marco"), new Disciplina("LP1"));
         Curso curso = new Curso();
         curso.alocarTurma(turma);
         curso.alocarTurma(turma);
@@ -33,8 +33,8 @@ class CursoTest {
 
     @Test
     void deveAlocarMaisDeUmaTurma() {
-        Turma turma = new Turma();
-        Turma turma1 = new Turma();
+        Turma turma = new Turma(new Professor("Marco"), new Disciplina("LP1"));
+        Turma turma1 = new Turma(new Professor("Marco"), new Disciplina("LP1"));
         Curso curso = new Curso();
         curso.alocarTurma(turma);
         curso.alocarTurma(turma1);
@@ -45,8 +45,8 @@ class CursoTest {
     void deveRetornarNomeProfessoresTurma(){
         Professor professor = new Professor("Marco");
         Professor professor2 = new Professor("Sandro");
-        Turma turma = new Turma();
-        Turma turma1 = new Turma();
+        Turma turma = new Turma(new Professor("Marco"), new Disciplina("LP1"));
+        Turma turma1 = new Turma(new Professor("Marco"), new Disciplina("LP1"));
         Curso curso = new Curso();
         turma.setProfessor(professor);
         turma1.setProfessor(professor2);
@@ -96,7 +96,7 @@ class CursoTest {
     void deveRetornarNomeAlunosTurma(){
         Aluno aluno = new Aluno("Pedro");
         Aluno aluno2 = new Aluno("Guilherme");
-        Turma turma = new Turma();
+        Turma turma = new Turma(new Professor("Marco"), new Disciplina("LP1"));
         turma.alocarAluno(aluno);
         turma.alocarAluno(aluno2);
         Curso curso = new Curso();
@@ -123,7 +123,7 @@ class CursoTest {
     @Test
     void deveRetornarNomeDisciplinaTurma(){
         Disciplina disciplina = new Disciplina("LP1");
-        Turma turma = new Turma();
+        Turma turma = new Turma(new Professor("Marco"), new Disciplina("LP1"));
         turma.setDisciplina(disciplina);
         Curso curso = new Curso();
         curso.alocarTurma(turma);
@@ -152,8 +152,8 @@ class CursoTest {
 
     @Test
     void deveEncontrarTurma() {
-        Turma turma = new Turma();
-        Turma turma2 = new Turma();
+        Turma turma = new Turma(new Professor("Marco"), new Disciplina("LP1"));
+        Turma turma2 = new Turma(new Professor("Marco"), new Disciplina("LP1"));
         Curso curso = new Curso();
         curso.alocarTurma(turma);
         assertTrue(curso.verificarTurma(turma));
@@ -161,8 +161,8 @@ class CursoTest {
 
     @Test
     void deveNaoEncontrarTurma() {
-        Turma turma = new Turma();
-        Turma turma2 = new Turma();
+        Turma turma = new Turma(new Professor("Marco"), new Disciplina("LP1"));
+        Turma turma2 = new Turma(new Professor("Marco"), new Disciplina("LP1"));
         Curso curso = new Curso();
         curso.alocarTurma(turma2);
         assertFalse(curso.verificarTurma(turma));
@@ -170,8 +170,8 @@ class CursoTest {
 
     @Test
     void deveDesalocarTurma() {
-        Turma turma = new Turma();
-        Turma turma2 = new Turma();
+        Turma turma = new Turma(new Professor("Marco"), new Disciplina("LP1"));
+        Turma turma2 = new Turma(new Professor("Marco"), new Disciplina("LP1"));
         Curso curso = new Curso();
         curso.alocarTurma(turma);
         curso.alocarTurma(turma2);
