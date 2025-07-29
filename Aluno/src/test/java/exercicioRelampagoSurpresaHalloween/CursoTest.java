@@ -92,20 +92,28 @@ class CursoTest {
         assertEquals(2,curso.numeroAlunos());
     }
 
-    /*@Test
+    @Test
     void deveRetornarNomeAlunosTurma(){
         Aluno aluno = new Aluno("Pedro");
+        Aluno aluno3 = new Aluno("Lucas");
         Aluno aluno2 = new Aluno("Guilherme");
+        Aluno aluno4 = new Aluno("Roberto");
         Turma turma = new Turma(new Professor("Marco"), new Disciplina("LP1"));
+        Turma turma2 = new Turma(new Professor("Marco"), new Disciplina("LP1"));
         turma.alocarAluno(aluno);
-        turma.alocarAluno(aluno2);
+        turma.alocarAluno(aluno3);
+        turma2.alocarAluno(aluno2);
+        turma2.alocarAluno(aluno4);
         Curso curso = new Curso();
         curso.alocarTurma(turma);
+        curso.alocarTurma(turma2);
         ArrayList<String> resultado = new ArrayList<String>();
         resultado.add("Pedro");
+        resultado.add("Lucas");
         resultado.add("Guilherme");
+        resultado.add("Roberto");
         assertEquals(resultado, curso.listaNomeAlunosTurma());
-    }*/
+    }
 
     @Test
     void deveRetornarNomeAlunos(){

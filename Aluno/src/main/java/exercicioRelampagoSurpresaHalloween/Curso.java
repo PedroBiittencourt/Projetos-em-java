@@ -46,13 +46,15 @@ public class Curso {
         return resultado;
     }
 
-    /*public ArrayList<ArrayList<String>> listaNomeAlunosTurma() {
-        ArrayList<ArrayList<String>> resultado = new ArrayList<ArrayList<String>>();
+    public ArrayList<String> listaNomeAlunosTurma() {
+        ArrayList<String> resultado = new ArrayList<String>();
         for (Turma turma : turmas) {
-            resultado.add(turma.listaNomeAlunos());
+            ArrayList<String> alunos = turma.listaNomeAlunos();
+            for (String nome : alunos)
+                resultado.add(nome);
         }
         return resultado;
-    }*/
+    }
 
     public void alocarAluno(Aluno aluno) {
         if (!this.alunos.contains(aluno)){
