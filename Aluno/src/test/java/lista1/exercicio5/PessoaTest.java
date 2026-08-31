@@ -16,8 +16,8 @@ class PessoaTest {
 
     @Test
     public void deveCalcularImc() {
-        pessoa.setAltura(2);
-        pessoa.setPeso(40);
+        pessoa.setAltura(2f);
+        pessoa.setPeso(40f);
         assertEquals(10, pessoa.calcularImc());
     }
 
@@ -30,7 +30,15 @@ class PessoaTest {
     }
 
     @Test
-    public void deveVerificarCondicaoImcMasculinoNoPesoNormal() {
+    public void deveVerificarCondicaoImcMasculinoNoPesoNormalValorLimte1() {
+        pessoa.setAltura(1.0f);
+        pessoa.setPeso(20.7f);
+        pessoa.setGenero("Masculino");
+        assertEquals("No peso normal", pessoa.verificarCondicao(pessoa.calcularImc()));
+    }
+
+    @Test
+    public void deveVerificarCondicaoImcMasculinoNoPesoNormalValorLimite2() {
         pessoa.setAltura(1.0f);
         pessoa.setPeso(26.3f);
         pessoa.setGenero("Masculino");
@@ -38,7 +46,15 @@ class PessoaTest {
     }
 
     @Test
-    public void deveVerificarCondicaoImcMasculinoMarginalmenteAcimaDoPeso() {
+    public void deveVerificarCondicaoImcMasculinoMarginalmenteAcimaDoPesoValorLimte1() {
+        pessoa.setAltura(1.0f);
+        pessoa.setPeso(26.4f);
+        pessoa.setGenero("Masculino");
+        assertEquals("Marginalmente acima do peso", pessoa.verificarCondicao(pessoa.calcularImc()));
+    }
+
+    @Test
+    public void deveVerificarCondicaoImcMasculinoMarginalmenteAcimaDoPesoValorLimte2() {
         pessoa.setAltura(1.0f);
         pessoa.setPeso(27.7f);
         pessoa.setGenero("Masculino");
@@ -46,7 +62,15 @@ class PessoaTest {
     }
 
     @Test
-    public void deveVerificarCondicaoImcMasculinoAcimaDoPesoIdeal() {
+    public void deveVerificarCondicaoImcMasculinoAcimaDoPesoIdealValorLimte1() {
+        pessoa.setAltura(1.0f);
+        pessoa.setPeso(27.8f);
+        pessoa.setGenero("Masculino");
+        assertEquals("Acima do peso ideal", pessoa.verificarCondicao(pessoa.calcularImc()));
+    }
+
+    @Test
+    public void deveVerificarCondicaoImcMasculinoAcimaDoPesoIdealValorLimte2() {
         pessoa.setAltura(1.0f);
         pessoa.setPeso(31.0f);
         pessoa.setGenero("Masculino");
@@ -70,7 +94,15 @@ class PessoaTest {
     }
 
     @Test
-    public void deveVerificarCondicaoImcFemininoNoPesoNormal() {
+    public void deveVerificarCondicaoImcFemininoPesoNormalValorLimte1() {
+        pessoa.setAltura(1.0f);
+        pessoa.setPeso(19.1f);
+        pessoa.setGenero("Feminino");
+        assertEquals("No peso normal", pessoa.verificarCondicao(pessoa.calcularImc()));
+    }
+
+    @Test
+    public void deveVerificarCondicaoImcFemininoPesoNormalValorLimte2() {
         pessoa.setAltura(1.0f);
         pessoa.setPeso(25.7f);
         pessoa.setGenero("Feminino");
@@ -78,7 +110,15 @@ class PessoaTest {
     }
 
     @Test
-    public void deveVerificarCondicaoImcFemininoMarginalmenteAcimaDoPeso() {
+    public void deveVerificarCondicaoImcFemininoMarginalmenteAcimaDoPesoValorLimte1() {
+        pessoa.setAltura(1.0f);
+        pessoa.setPeso(25.8f);
+        pessoa.setGenero("Feminino");
+        assertEquals("Marginalmente acima do peso", pessoa.verificarCondicao(pessoa.calcularImc()));
+    }
+
+    @Test
+    public void deveVerificarCondicaoImcFemininoMarginalmenteAcimaDoPesoValorLimte2() {
         pessoa.setAltura(1.0f);
         pessoa.setPeso(27.2f);
         pessoa.setGenero("Feminino");
@@ -86,7 +126,15 @@ class PessoaTest {
     }
 
     @Test
-    public void deveVerificarCondicaoImcFemininoAcimaDoPesoIdeal() {
+    public void deveVerificarCondicaoImcFemininoAcimaDoPesoIdealValorLimte1() {
+        pessoa.setAltura(1.0f);
+        pessoa.setPeso(27.3f);
+        pessoa.setGenero("Feminino");
+        assertEquals("Acima do peso ideal", pessoa.verificarCondicao(pessoa.calcularImc()));
+    }
+
+    @Test
+    public void deveVerificarCondicaoImcFemininoAcimaDoPesoIdealValorLimte2() {
         pessoa.setAltura(1.0f);
         pessoa.setPeso(32.2f);
         pessoa.setGenero("Feminino");
@@ -99,6 +147,14 @@ class PessoaTest {
         pessoa.setPeso(32.3f);
         pessoa.setGenero("Feminino");
         assertEquals("Obeso", pessoa.verificarCondicao(pessoa.calcularImc()));
+    }
+
+    @Test
+    void deveVerificarSexoIndeterminado(){
+        pessoa.setAltura(1.0f);
+        pessoa.setPeso(32.2f);
+        pessoa.setGenero("Macho");
+        assertEquals("Sexo indeterminado.", pessoa.verificarCondicao(pessoa.calcularImc()));
     }
 
 
